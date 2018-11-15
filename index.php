@@ -3,6 +3,7 @@ include ('defineInc.php');
 include ('dbInc.php');
 include ('writeTabInc.php');
 
+$NB_JOURS = count($JOURS);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -46,18 +47,32 @@ include ('writeTabInc.php');
 			</div><!-- Fin de #colonne-droite -->
 			<div id="page-contenu">
 			    <div id="visites" class="center">
-					<h1 id="t-eceh">2 week-ends de découverte et d'échange<br /><span class="vertc">autour de l'éco-construction</span></h1>
+					<?php
+					for ($x = 0; $x < $NB_JOURS; $x++) {
+						if ($x==0){
+							$nb_weekend = 1;
+						} elseif ($JOURS[$x][1] == ($JOURS[$x-1][1] + 1)){
+							$nb_weekend = $nb_weekend;
+						} else {
+							$nb_weekend = $nb_weekend + 1;
+					 	}
+					}
+					$output = $nb_weekend.' week-end';
+					if ($nb_weekend > 1) {
+						$output .= 's';
+					}
+					?>
+					<h1 id="t-eceh"><?php echo $output; ?> de découverte et d'échange<br /><span class="vertc">autour de l'éco-construction</span></h1>
 					<span id="nblieux" class="rougeo"><span id="nb_hotes"><?php echo $NB_HOTES; ?></span> lieux à découvrir en Indre-et-Loire et alentour</span>
 					<br /><br />
 					<?php /* construction de la chaîne avec les jours d'ouverture*/
-					$NB_JOURS = count($JOURS);
 					if ($NB_JOURS>0) {
 						$output="le";
 						if ($NB_JOURS>1) {
 							$output.="s";
 						}
 						$output.='<br /><span class="orange">';
-						for($x = 0; $x < $NB_JOURS; $x++) {
+						for ($x = 0; $x < $NB_JOURS; $x++) {
 							if ($x==0){
 								$output.=" ";
 							} elseif ($x==($NB_JOURS - 1)){
