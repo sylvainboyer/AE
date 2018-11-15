@@ -1,0 +1,854 @@
+/* --- STYLES DE BASE ALSACREATION --- */ 
+ 
+/* Page */ 
+html { 
+  font-size: 100%; /* …vite un bug d'IE 6-7. (1) */ 
+} 
+body { 
+  margin: 0; 
+  padding: 0; /* Remettre ‡ zÈro si nÈcessaire. */ 
+  /* Pensez ‡ utiliser une collection de polices (2), par ex: 
+  font-family: Arial, Helvetica, FreeSans, sans-serif; */ 
+	font-family: Trebuchet MS, Verdana, "Bitstream Vera Sans", sans-serif;
+  background-color: #fff;
+  color: #45260a;
+  font-size: .8em; /* ¿ adapter pour la police choisie. (3) */ 
+  line-height: 1.4; /* ¿ adapter au design. (4) */ 
+} 
+ 
+/* Titres */ 
+h1, h2, h3, h4, h5, h6 { 
+  margin: 1em 0 .5em 0; /* Rapproche le titre du texte. (5) */ 
+  line-height: 1.2; 
+  font-style: normal; 
+  font-weight: normal;
+}  
+h1, h3 { 
+  font-weight: bold; /* Valeur par dÈfaut. (6) */ 
+} 
+h1,h2 { 
+  font-size: 1.25em; 
+} 
+h3,h4 { 
+  font-size: 1.15em; 
+} 
+h5 { 
+  font-size: 1.05em; 
+} 
+h6 { 
+  font-size: 1em; 
+} 
+ 
+/* Listes */ 
+ul, ol { 
+  margin: .75em 0 .75em 32px; 
+  padding: 0; 
+  text-align:left;
+} 
+ 
+/* Paragraphes */ 
+#alterenergies p {
+  font-size:1.2em;
+}
+p { 
+  margin: .75em 0; /* Marges plus faibles que par dÈfaut. (7) */ 
+} 
+address { 
+  margin: .75em 0; 
+  font-style: normal; 
+} 
+ 
+/* Liens */ 
+a { 
+  text-decoration: none; 
+} 
+a:link { 
+  color: #11C; 
+} 
+a:visited { 
+  color: #339; 
+} 
+a:hover, a:focus, a:active { 
+  color: #00F; 
+} 
+ 
+/* Pas de bordure autour des images dans les liens */ 
+a img { 
+  border: none; 
+} 
+ 
+/* Divers ÈlÈments de type en-ligne (8) */ 
+em { 
+  font-style: italic; 
+} 
+strong { 
+  font-weight: bold; 
+} 
+ 
+/* Formulaires */ 
+form, fieldset { 
+  margin: 0; 
+  padding: 0; 
+  border: none; 
+} 
+input, button, select { 
+  vertical-align: middle; /* Solution pb. d'alignement. (9) */ 
+}
+
+/* Mise en forme simple pour les tableaux */ 
+table { 
+  margin: 0; 
+  border: 1px solid gray; /* Pas de bordure = "none". */ 
+  border-collapse: collapse; /* Valeur par dÈfaut: "separate". */ 
+  border-spacing: 0; 
+} 
+table td, table th { 
+  padding: 4px; /* Pas de retrait autour du texte = "0". */ 
+  border: 1px solid #ccc; /* Pas de bordure = "none". */ 
+  vertical-align: top; /* Valeur par dÈfaut: "middle" */ 
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Basic styles. These styles are needed for basic DokuWiki functions
+ * regardless of the used template. Templates can override them of course
+ */
+
+div.clearer {
+  clear: both;
+  line-height: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+div.no {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/**
+ * Design elements for default Template
+ *
+ * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Anika Henke <henke@cosmocode.de>
+ */
+
+
+/* ---------------- forms ------------------------ */
+
+form
+{
+  border: none;
+}
+
+/**
+#finscription p
+{
+	margin: 4px 0;
+}
+**/
+
+
+#finscription label {
+  display: block;
+  text-align: right;
+  font-weight: bold;
+  float: left;
+  width: 36%;
+  padding-right: 1%;
+}
+
+#finscription select{
+  width: 58%;
+  margin-left: 1%;
+}
+#finscription input{
+  width: 56%;
+  margin-left: 1%;
+}
+
+#nb{
+  width: 5% !important;
+}
+
+
+
+
+fieldset {
+  text-align: center;
+  border: 1px solid #8cacbb;
+  padding: 0.5em;
+  margin: auto;
+}
+
+#fsinscription {
+  width: 400px;
+}
+
+
+
+textarea.edit {
+  font-family: monospace;
+  font-size: 1.4em;
+  padding: 0.3em 0 0 0.3em;
+  width: 100%;
+}
+
+/* nice alphatransparency background except for IE <7 */
+html>body div.eceh textarea.edit {
+  background:  #fff url(/eceh/gfx/inputshadow.png) repeat-x top;
+}
+
+.edit {
+  border: 1px solid #8cacbb;
+  color: #45260a;
+  background-color: #fff;
+  vertical-align: middle;
+  margin: 1px;
+  padding: 0.20em 0.3em;
+  display: inline;
+}
+
+/* nice alphatransparency background except for IE <7 */
+html>body div.eceh input.edit,
+html>body div.eceh select.edit,
+#form-inscription .nb {
+  background:  #fff url(/eceh/gfx/inputshadow.png) repeat-x top;
+}
+/*
+div.eceh select.edit {
+  padding: 0.1em 0;
+}
+*/
+/* --------- buttons ------------------- */
+
+#finscription input.button {
+  width: auto;
+  margin-right:30px;
+}
+
+input.button,
+button.button {
+  text-decoration: none;
+  /*cursor: pointer;*/
+  width: 116%;
+  float: right;
+}
+
+
+/* nice alphatransparency background except for IE <7 */
+html>body div.eceh input.button,
+html>body div.eceh button.button {
+  background:  #fff url(/eceh/gfx/buttonshadow.png) repeat-x bottom;
+}
+
+* html div.eceh input.button,
+* html div.eceh button.button {
+  height: 1.8em;
+}
+
+/* --------------- Links ------------------ */
+a:link,
+a:visited {
+  color: #45260a;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: #45260a;
+  text-decoration: underline;
+}
+
+
+/*  bouton de connexion utilisateur   */
+#undoSamAM,
+#undoSamPM,
+#undoDimAM,
+#undoDimPM,
+a.login {
+	padding-left:8px;
+	padding-right:8px;
+	/*cursor:pointer;*/
+}
+
+#undoSamAM,
+#undoSamPM,
+#undoDimAM,
+#undoDimPM,
+a.login {
+	color:#666666!important;
+}
+#undoSamAM:hover,
+#undoSamPM:hover,
+#undoDimAM:hover,
+#undoDimPM:hover,
+a.login:hover {
+	color:#1a1a1a!important;
+}
+
+#undoSamAM:after,
+#undoSamPM:after,
+#undoDimAM:after,
+#undoDimPM:after,
+a.login:after {
+	content:"]";
+}
+#undoSamAM:before,
+#undoSamPM:before,
+#undoDimAM:before,
+#undoDimPM:before,
+a.login:before {
+	content:"[";
+}
+/* ------------- Page elements ----------------- */
+
+
+div.eceh span.user {
+  color: #ccc;
+  font-size: 90%;
+}
+
+div.eceh li.minor {
+  color: #666;
+  font-style: italic;
+}
+
+
+/* general headline setup */
+div.eceh h1,
+div.eceh h2,
+div.eceh h3,
+div.eceh h4,
+div.eceh h5 {
+    color:#438e2c;
+    background-color: inherit;
+    margin: 0 0 1em 0;
+    padding: 0.5em 0 0 0;
+    border-bottom: 1px solid #8cacbb;
+	  border-bottom:0px;
+    clear: left;
+}
+
+/* special headlines */
+div.eceh h1 {margin-left: 0px;}
+div.eceh h2 {margin-left: 10px;}
+div.eceh h3 {margin-left: 20px;}
+div.eceh h4 {margin-left: 25px;}
+div.eceh h5 {margin-left: 30px;}
+
+/* indent different sections */
+div.eceh div.level1 {margin-left: 3px;}
+div.eceh div.level2 {margin-left: 23px;}
+div.eceh div.level3 {margin-left: 43px;}
+div.eceh div.level4 {margin-left: 63px;}
+div.eceh div.level5 {margin-left: 83px;}
+
+/* unordered lists */
+div.eceh ul {
+  font-size: 1em;
+  line-height: 1.5em;
+	list-style-type: square;
+	margin: 0 0 0.5em 1.5em;
+	color: #45260a;
+	list-style-type:none;
+	list-style-image:url(/eceh/gfx/puce.png);
+}
+
+
+/* ordered lists */
+div.eceh ol {
+  line-height: 1.5em;
+  list-style-image: none;
+  margin: 0 0 0.5em 1.6em;
+  color: #45260a;
+}
+
+/* the list items overriding the ul/ol definition */
+div.eceh .li {
+  font-weight: normal;
+/*
+background-image:url(/eceh/gfx/puce.png);
+background-repeat:no-repeat;
+padding-left:10px;
+background-position:0 55%;*/
+}
+
+div.eceh ol {list-style-type: decimal}
+div.eceh ol ol {list-style-type: upper-roman}
+div.eceh ol ol ol {list-style-type: lower-alpha}
+div.eceh ol ol ol ol {list-style-type: lower-greek}
+
+div.eceh li.open {
+  list-style-image: url(/eceh/gfx/open.gif);
+  /*list-style-type: circle;*/
+}
+
+div.eceh li.closed {
+  list-style-image: url(/eceh/gfx/closed.gif);
+  /*list-style-type: disc;*/
+}
+
+div.eceh blockquote {
+  border-left: 2px solid #8cacbb;
+  padding-left: 3px;
+}
+
+div.eceh pre {
+  font-size: 120%;
+  padding: 0.5em;
+  border: 1px dashed #8cacbb;
+  color: #45260a;
+  overflow: auto;
+}
+
+/* ------------------ Additional ---------------------- */
+
+div.footerinc {
+  text-align: right;
+	background-color:#f7fbf6;
+	line-height:12pt;
+	padding:4px;
+}
+
+.footerinc p {
+	margin:0;
+	padding:2px;
+  /* opacity: 0.5; supprim√© pour respecter CSS 2.1 */
+	font-style:italic;
+	font-family: Times, "DejaVu Serif", "Bitstream Vera Serif", serif;
+	line-height:26pt;
+}
+.footerinc a img {
+  /* opacity: 0.5; supprim√© pour respecter CSS 2.1 */
+    border: 0;
+}
+
+.footerinc a:hover img {
+  /* opacity: 1; supprim√© pour respecter CSS 2.1 */
+}
+
+
+
+
+
+
+
+/*
+ * css du Template Alter'√©nergies
+ * fait par Etienne Fort <fortetienne@gmail.com>
+ */
+
+/* Positionnement g√©n√©ral :
+	un bandeau sup√©rieur : #bandeau
+	3 colonnes : #participants, #page-contenu, #partenaires
+	une barre d'√©dition en bas : #page-edition
+	un pied de page : div.footerinc
+*/
+
+/* Ce s√©lecteur permet de r√©cup√©rer toutes la mise en page du th√®me par d√©faut de eceh
+	Cependant inutile s√©mantiquement et pour le positionnement g√©n√©ral */
+div.eceh {
+	width:90%;
+	margin:0 auto;
+	max-width: 1200px;
+	min-width: 980px;
+}
+
+#page-contenu p {
+	margin-bottom:8px;
+	margin-top:4px;
+}
+
+p.user {
+	font-size:10pt;
+	font-style:italic;
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
+p.footer {
+	line-height:14pt;
+	padding-bottom:4px;
+}
+
+/* Le bandeau sup√©rieur */
+#bandeau {
+  display:none;
+}
+#logo-alterenergies {
+	float:left;
+	border-bottom:1px solid #036bc2;
+}
+#bandeau-photos { float:right; }
+#titre-alterenergies {
+	display:block;
+	overflow:hidden;
+	height:97px;
+	background-repeat:no-repeat;
+	background-image:url(/eceh/gfx/eceh.jpg);
+	background-position:50% 50%;
+}
+
+
+
+/* -------------------------------------------------------------------------------*/
+/* Les trois colonnes et la barre d'√©dition de la page - les 2 colonnes pour ECEH*/
+#trois-colonnes {
+	overflow:hidden;
+}
+#conteneur-degrade {
+	background-color: #f7fbf6;
+	background-image:url(/eceh/gfx/degrade-vert.png);
+	background-repeat:repeat-x;
+	padding-top:4px;
+}
+
+#page-contenu,
+#participants,
+#partenaires, 
+#alterenergies {
+	border:1px solid #45260a;
+	border-right:1px solid #d37424;
+}
+#colonne-droite {
+  display: none;
+}
+
+#page-contenu,
+#participants {
+	margin-left:4px;
+	margin-right:4px;
+}
+#participants {
+	width:250px;
+	float:left;
+	overflow:hidden;
+}
+
+#colonne-droite {
+	text-align:center;
+	width:200px;
+	float:right;
+}
+#resume-inscription {
+  width:550px;
+	text-align:center;
+	margin: auto;
+}
+#t-inscription .col1 {
+  width:32%;
+}
+#t-inscription .col2 {
+  width:16%;
+}
+#page-contenu {
+	overflow:auto;
+	text-align:center;
+	margin-bottom:8px;
+}
+#alterenergies{
+	margin-top:8px;
+}
+.attention{
+  color:#bc111b!important;
+}
+
+#hotes {
+  text-align: justify;
+  margin-right: 15px;
+}
+#hotes .hote {
+  padding: 5px 0px;
+}
+
+#hotes .nom {
+  font-weight: bold;
+}
+#hotes .adr {
+  margin-left: 10px;
+  color:#bc631b;
+  float:right;
+}
+#hotes .special {
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  margin-left: 30px;
+  color:#bc691b;
+  position:relative;
+  
+}
+
+#hotes .blog a {
+  text-decoration: underline;
+}
+#hotes .description {
+  position: absolute;
+  background-color: #eff2ef;
+  width: 550px;
+	border:1px solid #45260a;
+	border-right:1px solid #d37424;
+	padding: 10px;
+	left: 30%;
+}
+
+.mini{
+	height:50px;
+	display:inline;
+}
+.important {
+  color:#bc111b!important;
+}
+
+#affiche,
+#tract {
+  width:200px
+}
+#pdf {
+  margin-left:20px;
+}
+#region {
+  width:180px
+}
+
+#participants .affiche {
+  padding-bottom:15px;
+}
+
+#map {
+  position: fixed;
+	border:1px solid #45260a;
+  left:280px;
+  top:280px;
+  display: block!important;
+}
+#participants .ville {
+  font-weight: bold;
+  color: #dc7926!important;
+}
+#participants .hote {
+  color: #dc7926!important;
+}
+#participants .nb {
+  font-style: italic;
+}
+
+#partenaires,
+#participants,
+#alterenergies,
+#page-contenu,
+#resume-inscription {
+	background-color:#fff;
+	padding:5px;
+}
+#resume-inscription .grey {
+	background-color:#ddd;
+}
+
+
+/* Barre d'√©dition de la page */
+#page-edition {
+	background-color:#fff;
+	line-height:20px;
+}
+#page-edition-arriere-plan {
+	background-image:url(/eceh/gfx/nos-services-center.png);
+	background-repeat:repeat-x;
+	background-position:center;
+	margin-right:15px;
+	margin-left:15px;
+	overflow:auto;
+}
+#boutons-utilisateur {
+	margin-right:80px;
+	float:right;
+	background:#fff;
+}
+#boutons-edition-page {
+	clear:both;
+	text-align:center;
+	background:#fff;
+}
+
+
+#dimPM,
+#samPM,
+#dimAM,
+#samAM {
+  text-align: left;
+  color: #dc7926;
+  padding-left: 10px;
+}
+
+.mvisible,
+.visible {
+  display : block;
+}
+.cache {
+  display : none;
+}
+
+#nb_restant {
+  padding-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------- */
+/* Les titres */
+#participants h1 a,
+#partenaires h1 a {
+  font-weight: normal;
+	text-align:center;
+	font-style:italic;
+	font-family: Times, "DejaVu Serif", "Bitstream Vera Serif", serif;
+	color:#dc7926!important;
+	font-size:1.1em;
+}
+#hotes h4 a {
+	color:#dc7926!important;
+}
+
+
+div.eceh h1,
+div.eceh h2,
+div.eceh h3,
+div.eceh h4,
+div.eceh h5 {
+	font-family: Verdana, "Bitstream Vera Sans", sans-serif;
+    border-bottom:0;
+}
+div.eceh h3,
+div.eceh h4 {
+  color:#45260A;
+}
+
+
+
+/* les titres de la colonne participants */
+#participants h1 { text-align:center; }
+#participants li {
+	padding-right:2px;
+	line-height:1em;
+	margin-bottom:8px;
+	font-size:1em;
+}
+#participants h2,
+#participants h3,
+#participants h4,
+#participants h5 {
+	text-align:center;
+	font-size:10pt;
+	margin-bottom:8px;
+	margin-top:2px;
+	margin-left:0;
+}
+#participants h3,
+#participants h5 { font-style:italic; }
+#participants h2,
+#participants h4 { font-weight:bold; }
+
+#participants div.level2,
+#participants div.level3,
+#participants div.level4,
+#participants div.level5 { margin-left: 4px; }
+
+/* Les titres de #page-contenu */
+#page-contenu h1 { text-align:center; }
+#page-contenu h2,
+#page-contenu h3,
+#page-contenu h4,
+#page-contenu h5 { font-style:italic; }
+
+
+
+/* Les liens */
+div.eceh a,
+div.eceh a.participants,
+div.eceh a.newsletter {
+	color:#bc631b;
+}
+div.eceh a:hover,
+div.eceh a.participants:hover,
+div.eceh a.newsletter:hover {
+	color:#45260a;
+}
+
+
+
+
+div.eceh h1 a,
+div.eceh h2 a,
+div.eceh h3 a,
+div.eceh h4 a,
+div.eceh h5 a {
+	color:#336600;
+	text-decoration: none!important;
+}
+
+div.eceh h1 a:hover,
+div.eceh h2 a:hover,
+div.eceh h3 a:hover,
+div.eceh h4 a:hover,
+div.eceh h5 a:hover {
+	color:#336600;
+	text-decoration: none!important;
+}
+
+
+
+
+
+
+
+
+img.illustration {
+	margin:0;
+}
+
+img.left {
+	float:left;
+	margin-right:4px;
+}
+img.right {
+	float:right;
+	margin-left:4px;
+}
+
+/* Les images */
+div.image_alterenergies {
+	font-style:italic;
+	text-align:center;
+	overflow:auto;
+	margin-top:4px;
+	margin-bottom:4px;
+}

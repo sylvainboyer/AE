@@ -1,0 +1,831 @@
+a.interwiki { background: transparent url(/lib/images/interwiki.png) 0px 1px no-repeat; padding-left: 16px;}a.iw_wp {  background-image: url(/lib/images/interwiki/wp.gif)}a.iw_wpfr {  background-image: url(/lib/images/interwiki/wpfr.gif)}a.iw_wpde {  background-image: url(/lib/images/interwiki/wpde.gif)}a.iw_wpes {  background-image: url(/lib/images/interwiki/wpes.gif)}a.iw_wppl {  background-image: url(/lib/images/interwiki/wppl.gif)}a.iw_wpjp {  background-image: url(/lib/images/interwiki/wpjp.gif)}a.iw_wpmeta {  background-image: url(/lib/images/interwiki/wpmeta.gif)}a.iw_doku {  background-image: url(/lib/images/interwiki/doku.gif)}a.iw_dokubug {  background-image: url(/lib/images/interwiki/dokubug.gif)}a.iw_amazon {  background-image: url(/lib/images/interwiki/amazon.gif)}a.iw_amazon_de {  background-image: url(/lib/images/interwiki/amazon.de.gif)}a.iw_amazon_uk {  background-image: url(/lib/images/interwiki/amazon.uk.gif)}a.iw_phpfn {  background-image: url(/lib/images/interwiki/phpfn.gif)}a.iw_coral {  background-image: url(/lib/images/interwiki/coral.gif)}a.iw_sb {  background-image: url(/lib/images/interwiki/sb.gif)}a.iw_google {  background-image: url(/lib/images/interwiki/google.gif)}a.iw_meatball {  background-image: url(/lib/images/interwiki/meatball.gif)}a.iw_wiki {  background-image: url(/lib/images/interwiki/wiki.gif)}a.mediafile { background: transparent url(/lib/images/fileicons/file.png) 0px 1px no-repeat; padding-left: 18px; padding-bottom: 1px;}a.mf_gif {  background-image: url(/lib/images/fileicons/gif.png)}a.mf_tar {  background-image: url(/lib/images/fileicons/tar.png)}a.mf_sxc {  background-image: url(/lib/images/fileicons/sxc.png)}a.mf_js {  background-image: url(/lib/images/fileicons/js.png)}a.mf_pl {  background-image: url(/lib/images/fileicons/pl.png)}a.mf_gz {  background-image: url(/lib/images/fileicons/gz.png)}a.mf_odt {  background-image: url(/lib/images/fileicons/odt.png)}a.mf_txt {  background-image: url(/lib/images/fileicons/txt.png)}a.mf_sxi {  background-image: url(/lib/images/fileicons/sxi.png)}a.mf_py {  background-image: url(/lib/images/fileicons/py.png)}a.mf_deb {  background-image: url(/lib/images/fileicons/deb.png)}a.mf_xml {  background-image: url(/lib/images/fileicons/xml.png)}a.mf_pdf {  background-image: url(/lib/images/fileicons/pdf.png)}a.mf_jpg {  background-image: url(/lib/images/fileicons/jpg.png)}a.mf_odc {  background-image: url(/lib/images/fileicons/odc.png)}a.mf_tgz {  background-image: url(/lib/images/fileicons/tgz.png)}a.mf_bz2 {  background-image: url(/lib/images/fileicons/bz2.png)}a.mf_rpm {  background-image: url(/lib/images/fileicons/rpm.png)}a.mf_css {  background-image: url(/lib/images/fileicons/css.png)}a.mf_swf {  background-image: url(/lib/images/fileicons/swf.png)}a.mf_odf {  background-image: url(/lib/images/fileicons/odf.png)}a.mf_odg {  background-image: url(/lib/images/fileicons/odg.png)}a.mf_xls {  background-image: url(/lib/images/fileicons/xls.png)}a.mf_rtf {  background-image: url(/lib/images/fileicons/rtf.png)}a.mf_odi {  background-image: url(/lib/images/fileicons/odi.png)}a.mf_rar {  background-image: url(/lib/images/fileicons/rar.png)}a.mf_cpp {  background-image: url(/lib/images/fileicons/cpp.png)}a.mf_htm {  background-image: url(/lib/images/fileicons/htm.png)}a.mf_odp {  background-image: url(/lib/images/fileicons/odp.png)}a.mf_zip {  background-image: url(/lib/images/fileicons/zip.png)}a.mf_ppt {  background-image: url(/lib/images/fileicons/ppt.png)}a.mf_php {  background-image: url(/lib/images/fileicons/php.png)}a.mf_conf {  background-image: url(/lib/images/fileicons/conf.png)}a.mf_sxw {  background-image: url(/lib/images/fileicons/sxw.png)}a.mf_jpeg {  background-image: url(/lib/images/fileicons/jpeg.png)}a.mf_java {  background-image: url(/lib/images/fileicons/java.png)}a.mf_ods {  background-image: url(/lib/images/fileicons/ods.png)}a.mf_lua {  background-image: url(/lib/images/fileicons/lua.png)}a.mf_rb {  background-image: url(/lib/images/fileicons/rb.png)}a.mf_doc {  background-image: url(/lib/images/fileicons/doc.png)}a.mf_cs {  background-image: url(/lib/images/fileicons/cs.png)}a.mf_png {  background-image: url(/lib/images/fileicons/png.png)}a.mf_c {  background-image: url(/lib/images/fileicons/c.png)}a.mf_sxd {  background-image: url(/lib/images/fileicons/sxd.png)}a.mf_html {  background-image: url(/lib/images/fileicons/html.png)}a.mf_ps {  background-image: url(/lib/images/fileicons/ps.png)}/**
+ * Basic styles. These styles are needed for basic DokuWiki functions
+ * regardless of the used template. Templates can override them of course
+ */
+
+div.clearer {
+  clear: both;
+  line-height: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+div.no {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+/**
+ * Design elements for default Template
+ *
+ * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Anika Henke <henke@cosmocode.de>
+ */
+
+/* -------------- general elements --------------- */
+
+* { padding: 0; margin: 0; }
+
+body {
+	font-family: Trebuchet MS, Verdana, "Bitstream Vera Sans", sans-serif;
+  background-color: #fff;
+  color: #45260a;
+font-size:10pt;
+}
+
+/* the document */
+div.dokuwiki div.page {
+  margin: 4px 2em 0 1em;
+  text-align: justify;
+}
+h
+div.dokuwiki table {
+  font-size: 100%;
+}
+
+div.dokuwiki tr,
+div.dokuwiki td,
+div.dokuwiki th {
+}
+
+div.dokuwiki img {
+  border: 0;
+}
+
+/* ---------------- forms ------------------------ */
+
+#form-inscription {
+  border: none;
+}
+
+#form-inscription p
+{
+	margin: 4px 0;
+}
+
+
+
+#form-inscription label {
+  display: block;
+  text-align: right;
+  font-weight: bold;
+  float: left;
+  width: 40%;
+  padding-right: 1%;
+
+}
+
+#form-inscription select{
+  width: 52%;
+  margin-left: 1%;
+}
+#form-inscription input{
+  width: 50%;
+  margin-left: 1%;
+}
+
+#form-inscription .form_nb{
+  width: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+div.dokuwiki label.simple {
+  display: block;
+  text-align: left;
+  font-weight: normal;
+}
+
+
+
+
+
+div.dokuwiki fieldset {
+  width: 300px;
+  text-align: center;
+  border: 1px solid #8cacbb;
+  padding: 0.5em;
+  margin: auto;
+}
+div.dokuwiki fieldset.inscription {
+  width: 400px;
+  text-align: center;
+  border: 1px solid #8cacbb;
+  padding: 0.5em;
+  margin: auto;
+}
+
+div.dokuwiki textarea.edit {
+  font-family: monospace;
+  font-size: 14px;
+  color: #45260a;
+  background-color: #fff;
+  border: 1px solid #8cacbb;
+  padding: 0.3em 0 0 0.3em;
+  width: 100%;
+}
+
+/* nice alphatransparency background except for IE <7 */
+html>body div.dokuwiki textarea.edit {
+  background:  #fff url(/lib/tpl/alterenergies/images/inputshadow.png) repeat-x top;
+}
+
+div.dokuwiki input.edit,
+div.dokuwiki select.edit,
+#form-inscription input,
+#form-inscription select,
+#form-inscription .form_nb {
+  font-size: 100%;
+  border: 1px solid #8cacbb;
+  color: #45260a;
+  background-color: #fff;
+  vertical-align: middle;
+  margin: 1px;
+  padding: 0.20em 0.3em;
+  display: inline;
+}
+
+/* nice alphatransparency background except for IE <7 */
+html>body div.dokuwiki input.edit,
+html>body div.dokuwiki select.edit,
+#form-inscription .form_nb {
+  background:  #fff url(/lib/tpl/alterenergies/images/inputshadow.png) repeat-x top;
+}
+
+div.dokuwiki select.edit {
+  padding: 0.1em 0;
+}
+
+/* --------- buttons ------------------- */
+
+
+div.dokuwiki input.button,
+div.dokuwiki button.button,
+#form-inscription .button {
+  border: 1px solid #8cacbb;
+  color: #45260a;
+  background-color: #fff;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 100%;
+  cursor: pointer;
+  margin: 1px;
+  padding: 0.2em 0.3em;
+}
+#form-inscription .button{
+  width: 20%;
+  float: right;
+}
+
+
+/* nice alphatransparency background except for IE <7 */
+html>body div.dokuwiki input.button,
+html>body div.dokuwiki button.button {
+  background:  #fff url(/lib/tpl/alterenergies/images/buttonshadow.png) repeat-x bottom;
+}
+
+* html div.dokuwiki input.button,
+* html div.dokuwiki button.button {
+  height: 1.8em;
+}
+
+div.dokuwiki div.secedit input.button {
+  border: 1px solid #8cacbb;
+  color: #45260a;
+  background-color: #fff;
+  vertical-align: middle;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  cursor: pointer;
+  float: right;
+  display: inline;
+}
+
+/* --------------- Links ------------------ */
+
+div.dokuwiki a:link,
+div.dokuwiki a:visited {
+  color: #45260a;
+  text-decoration: none;
+}
+div.dokuwiki a:hover,
+div.dokuwiki a:active {
+  color: #45260a;
+  text-decoration: underline;
+}
+
+/* ------------- Page elements ----------------- */
+
+div.dokuwiki div.preview {
+  background-color: #f5f5f5;
+  margin: 0 0 0 2em;
+  padding: 4px;
+  border: 1px dashed #45260a;
+}
+
+div.dokuwiki div.breadcrumbs {
+  background-color: #f5f5f5;
+  color: #666;
+  font-size: 80%;
+  padding: 0 0 0 4px;
+}
+
+div.dokuwiki span.user {
+  color: #ccc;
+  font-size: 90%;
+}
+
+div.dokuwiki li.minor {
+  color: #666;
+  font-style: italic;
+}
+
+/* general headline setup */
+div.dokuwiki h1,
+div.dokuwiki h2,
+div.dokuwiki h3,
+div.dokuwiki h4,
+div.dokuwiki h5 {
+    color:#438e2c;
+    background-color: inherit;
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0 0 1em 0;
+    padding: 0.5em 0 0 0;
+    border-bottom: 1px solid #8cacbb;
+	border-bottom:0px;
+    clear: left;
+}
+
+/* special headlines */
+div.dokuwiki h1 {font-size: 12pt; margin-left: 0px;}
+div.dokuwiki h2 {font-size: 12pt; margin-left: 20px;}
+div.dokuwiki h3 {font-size: 10pt; margin-left: 40px;}
+div.dokuwiki h4 {font-size: 10pt; margin-left: 60px;}
+div.dokuwiki h5 {font-size: 10pt; margin-left: 80px;}
+
+/* indent different sections */
+div.dokuwiki div.level1 {margin-left: 3px;}
+div.dokuwiki div.level2 {margin-left: 23px;}
+div.dokuwiki div.level3 {margin-left: 43px;}
+div.dokuwiki div.level4 {margin-left: 63px;}
+div.dokuwiki div.level5 {margin-left: 83px;}
+
+/* unordered lists */
+div.dokuwiki ul {
+  line-height: 1.5em;
+	list-style-type: square;
+	margin: 0 0 0.5em 1.5em;
+	color: #45260a;
+}
+
+/* ordered lists */
+div.dokuwiki ol {
+  line-height: 1.5em;
+  list-style-image: none;
+  margin: 0 0 0.5em 1.5em;
+  color: #45260a;
+  font-weight: bold;
+}
+
+/* the list items overriding the ul/ol definition */
+div.dokuwiki .li {
+  color: #45260a;
+  font-weight: normal;
+/*
+background-image:url(/lib/tpl/alterenergies/images-alterenergies/puce.png);
+background-repeat:no-repeat;
+padding-left:10px;
+background-position:0 55%;*/
+}
+
+div.dokuwiki ol {list-style-type: decimal}
+div.dokuwiki ol ol {list-style-type: upper-roman}
+div.dokuwiki ol ol ol {list-style-type: lower-alpha}
+div.dokuwiki ol ol ol ol {list-style-type: lower-greek}
+
+div.dokuwiki li.open {
+  list-style-image: url(/lib/tpl/alterenergies/images/open.gif);
+    /*list-style-type: circle;*/
+}
+
+div.dokuwiki li.closed {
+  list-style-image: url(/lib/tpl/alterenergies/images/closed.gif);
+    /*list-style-type: disc;*/
+}
+
+div.dokuwiki blockquote {
+  border-left: 2px solid #8cacbb;
+  padding-left: 3px;
+}
+
+div.dokuwiki pre {
+  font-size: 120%;
+  padding: 0.5em;
+  border: 1px dashed #8cacbb;
+  color: #45260a;
+  overflow: auto;
+}
+
+/* ------------------ Additional ---------------------- */
+
+div.footerinc {
+    text-align: right;
+	background-color:#f7fbf6;line-height:12pt;
+	padding:4px;
+}
+
+.footerinc p {
+	margin:0;
+	padding:2px;
+  /* opacity: 0.5; supprimé pour respecter CSS 2.1 */
+	font-style:italic;
+	font-family: Times, "DejaVu Serif", "Bitstream Vera Serif", serif;
+	line-height:26pt;
+}
+.footerinc a img {
+  /* opacity: 0.5; supprimé pour respecter CSS 2.1 */
+    border: 0;
+}
+
+.footerinc a:hover img {
+  /* opacity: 1; supprimé pour respecter CSS 2.1 */
+}
+
+/*
+ * css du Template Alter'énergies
+ * fait par Etienne Fort <fortetienne@gmail.com>
+ */
+
+/* Positionnement général :
+	un bandeau supérieur : #bandeau
+	la piste : #piste
+	une barre de navigation horizontale : #nos-services
+	3 colonnes : #sommaire-gauche, #page-contenu, #colonne-droite
+	une barre d'édition en bas : #page-edition
+	un pied de page : div.footerinc
+	les commentaires du plugin discussion : div.comment_wrapper
+*/
+
+/* Ce sélecteur permet de récupérer toutes la mise en page du thème par défaut de dokuwiki
+	Cependant inutile sémantiquement et pour le positionnement général */
+div.dokuwiki {
+	width:90%;
+	margin:0 auto;
+	max-width: 1200px;
+	min-width: 780px;
+}
+body {
+	color:#45260a;
+	background-color:#fff;
+}
+
+#page-contenu p {
+	margin-bottom:8px;
+	margin-top:4px;
+}
+p.user {
+	font-size:10pt;
+	font-style:italic;
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
+/* Les messages générés dans tpl_functions.php */
+p.message {
+	color:#bc631b;
+	text-align:center;
+	margin-bottom:8px;
+	margin-bottom:8px;
+}
+
+p.footer {
+	line-height:14pt;
+	padding-bottom:4px;
+}
+
+/* Le bandeau supérieur */
+#bandeau {
+	overflow:visible;
+	height:97px;
+	margin-bottom:5px;
+	border-bottom:1px solid #036bc2;
+}
+#logo-alterenergies {
+	float:left;
+	border-bottom:1px solid #036bc2;
+}
+#bandeau-photos { float:right; }
+#titre-alterenergies {
+
+	display:block;
+	overflow:hidden;
+	height:97px;
+	background-repeat:no-repeat;
+	background-image:url(/lib/tpl/alterenergies/images-alterenergies/eceh.jpg);
+	background-position:50% 50%;
+}
+
+/* La piste */
+#piste {
+	background-color:white;
+	padding:4px;
+	padding-left:8px;
+	padding-right:8px;
+	font-size:8pt;
+	text-align:justify;
+	font-style:italic;
+}
+a.breadcrumbs {
+	color:#bc631b!important;
+}
+div.dokuwiki a.breadcrumbs:hover {
+	color:#45260a!important;
+}
+.curid a.breadcrumbs {font-style:normal;color:#45260a!important;}
+
+/* La barre supérieure "Nos services" */
+#nos-services-fond-texte {
+	background-color:#fff;
+	line-height:40px;
+}
+
+#bandeau-nos-services {
+	margin-left:8px;
+	margin-right:8px;
+	background-image:url(/lib/tpl/alterenergies/images-alterenergies/nos-services-center.png);
+	background-repeat:repeat-x;
+	background-position:center;
+	text-align:right;
+	padding-right:80px;
+}
+
+#bandeau-nos-services .level1,
+#bandeau-nos-services .li,
+#bandeau-nos-services ul {margin:0px;}
+
+/* Bidouille -10px pour supprimer l'espace entre h1 et et div.level1 */
+#bandeau-nos-services div.level1 {margin-left:-10px;}
+
+#bandeau-nos-services li {
+	padding-right:4px;
+	padding-left:4px;
+}
+
+#bandeau-nos-services h1,
+#bandeau-nos-services li,
+#bandeau-nos-services ul,
+#bandeau-nos-services div {
+	display:inline;
+}
+
+
+/* Bidouille +10px pour supprimer l'espace entre h1 et et div.level1 */
+#bandeau-nos-services h1 {
+	padding-left:4px;
+	padding-right:14px;
+}
+
+#bandeau-nos-services .lien-edition {
+	padding-left:4px;
+	padding-right:4px;
+}
+
+#bandeau-nos-services h1,
+#bandeau-nos-services div {
+	background-color:#fff;
+}
+
+/* Les trois colonnes et la barre d'édition de la page - les 2 colonnes pour ECEH*/
+#trois-colonnes,
+#deux-colonnes {
+	overflow:hidden;
+}
+#conteneur-degrade {
+	background-color: #f7fbf6;
+	background-image:url(/lib/tpl/alterenergies/images-alterenergies/degrade-vert.png);
+	background-repeat:repeat-x;
+	padding-top:4px;
+}
+#sommaire-gauche,
+#colonne-participants {
+	margin:4px;
+	margin-right:0px;
+	margin-left:8px;
+	width:200px;
+	float:left;
+	border:1px solid #45260a;
+	border-right:1px dotted #d37424;
+	overflow:hidden;
+}
+#resume-inscription {
+	margin:4px;
+	margin:auto;
+	padding: 4px;
+	width:400px;
+  text-align: center;
+  border: 1px solid #8cacbb;
+	overflow:hidden;
+}
+
+
+
+
+
+#colonne-droite {
+	text-align:center;
+	font-size:12pt;
+	width:200px;
+	float:right;
+}
+#page-contenu {
+	border:1px solid #45260a;
+	border-left:1px dotted #d37424;
+	overflow:auto;
+	margin:4px;
+	text-align:center;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+#partenaires,
+#colonne-participants,
+#programme_actions,
+#entreprise_insertion,
+#alterenergies,
+#sommaire-gauche,
+#page-contenu,
+#coin_des_redacteurs,
+#collegiale,
+#resume-inscription {
+	background-color:#fff;
+	padding:5px;
+	padding-bottom:15px;
+}
+
+#colonne-participants, #partenaires, #programme_actions, #entreprise_insertion, #alterenergies {
+	border:1px solid #45260a;
+	margin:4px;
+	margin-right:8px;
+}
+#coin_des_redacteurs,
+#collegiale {
+	margin:4px;
+	margin-right:8px;
+	border:1px solid #45260a;
+}
+#coin_des_redacteurs ul,
+#collegiale ul,
+#programme_actions ul,
+#entreprise_insertion ul,
+#alterenergies ul {
+	text-align:left;
+	margin-top:8px;
+	font-size:10pt;
+}
+
+div.dokuwiki div.license {
+  visibility:hidden;
+}
+
+/* Les commentaires du plugin 'discussion'
+ * qui a déjà sa feuille de style /lib/plugin/discussion/style.css */
+div.dokuwiki div.comment_wrapper {
+	background-color:#fff;
+	margin:4px;
+	margin-top:35px;
+	border:1px dotted #d37424;
+	overflow:hidden; /* Pour prévenir des url trop longues */
+}
+div.dokuwiki .comment_head {
+	color: #d37424;
+}
+/* Correction du bug faisant que le texte du commentaire déborde  sur les boutons */
+div.dokuwiki div.comment_buttons {
+	/*margin-top: -21px;*/
+	clear:both;
+}
+ul.admin_discussion + div.comment_buttons {
+	padding:4px;
+	margin-top:-12px;
+	/*background-color:#fff;*/
+	overflow:hidden;
+}
+div.dokuwiki .comment_body {
+	padding-bottom: 21px;
+}
+
+#page-contenu div.comment_wrapper h2 {
+	text-align:center;
+	font-style:normal;
+	font-weight:bold;
+	font-size:10pt;
+}
+
+/* Barre d'édition de la page */
+#page-edition {
+	background-color:#fff;
+	line-height:40px;
+}
+#page-edition-arriere-plan {
+	background-image:url(/lib/tpl/alterenergies/images-alterenergies/nos-services-center.png);
+	background-repeat:repeat-x;
+	background-position:center;
+	margin-right:15px;
+	margin-left:15px;
+	overflow:auto;
+}
+#boutons-utilisateur {
+	margin-right:80px;
+	float:right;
+	background:#fff;
+}
+#boutons-edition-page {
+	clear:both;
+	text-align:center;
+	background:#fff;
+}
+
+/* Les listes */
+div.dokuwiki ul {
+	list-style-type:none;
+	list-style-image:url(/lib/tpl/alterenergies/images-alterenergies/puce.png);
+}
+#page-contenu li {
+	margin-bottom:8px;
+}
+
+/* Les titres */
+#sommaire-gauche h1 a,
+#colonne-participants h1 a,
+#partenaires h1 a, 
+#bandeau-nos-services h1 a {
+	text-align:center;
+	font-style:italic;
+	font-family: Times, "DejaVu Serif", "Bitstream Vera Serif", serif;
+	color:#dc7926!important;
+	font-size:12pt;
+}
+
+div.dokuwiki h1,
+div.dokuwiki h2,
+div.dokuwiki h3,
+div.dokuwiki h4,
+div.dokuwiki h5 {
+	font-family: Verdana, "Bitstream Vera Sans", sans-serif;
+	color:#336600;
+    border-bottom:0;
+}
+
+/* les titres du sommaire de gauche */
+#sommaire-gauche h1 { text-align:center; }
+#sommaire-gauche li {
+	padding-right:10px;
+	line-height:10pt;
+	margin-bottom:8px;
+	font-size:10pt;
+}
+#sommaire-gauche h2,
+#sommaire-gauche h3,
+#sommaire-gauche h4,
+#sommaire-gauche h5 {
+	text-align:center;
+	font-size:10pt;
+	margin-bottom:8px;
+	margin-top:2px;
+	margin-left:0;
+}
+#sommaire-gauche h3,
+#sommaire-gauche h5 { font-style:italic; }
+#sommaire-gauche h2,
+#sommaire-gauche h4 { font-weight:bold; }
+
+#sommaire-gauche div.level2,
+#sommaire-gauche div.level3,
+#sommaire-gauche div.level4,
+#sommaire-gauche div.level5 { margin-left: 4px; }
+
+/* les titres de la colonne participants */
+#colonne-participants h1 { text-align:center; }
+#colonne-participants li {
+	padding-right:2px;
+	line-height:10pt;
+	margin-bottom:8px;
+	font-size:10pt;
+}
+#colonne-participants h2,
+#colonne-participants h3,
+#colonne-participants h4,
+#colonne-participants h5 {
+	text-align:center;
+	font-size:10pt;
+	margin-bottom:8px;
+	margin-top:2px;
+	margin-left:0;
+}
+#colonne-participants h3,
+#colonne-participants h5 { font-style:italic; }
+#colonne-participants h2,
+#colonne-participants h4 { font-weight:bold; }
+
+#colonne-participants div.level2,
+#colonne-participants div.level3,
+#colonne-participants div.level4,
+#colonne-participants div.level5 { margin-left: 4px; }
+
+/* Les titres de #page-contenu */
+#page-contenu h1 { text-align:center; }
+#page-contenu h2,
+#page-contenu h3,
+#page-contenu h5 { font-style:italic; }
+
+
+
+/* Les liens */
+div.dokuwiki a,
+div.dokuwiki a.devis,
+div.dokuwiki a.newsletter
+ {
+	color:#bc631b;
+}
+div.dokuwiki a:hover,
+div.dokuwiki a.devis:hover,
+div.dokuwiki a.newsletter:hover {
+	color:#45260a;
+}
+
+
+
+
+div.dokuwiki h1 a,
+div.dokuwiki h2 a,
+div.dokuwiki h3 a,
+div.dokuwiki h4 a,
+div.dokuwiki h5 a {
+	color:#336600;
+	text-decoration: none!important;
+}
+
+div.dokuwiki h1 a:hover,
+div.dokuwiki h2 a:hover,
+div.dokuwiki h3 a:hover,
+div.dokuwiki h4 a:hover,
+div.dokuwiki h5 a:hover {
+	color:#336600;
+	text-decoration: none!important;
+}
+
+/* Compenser les effets d'opacity pour le plugin discussion */
+div.dokuwiki ul.admin_discussion li.hidden .li,
+div.dokuwiki ul.admin_discussion li.hidden .abstract,
+div.dokuwiki ul.admin_discussion li.hidden a {
+	/* opacity: 0.5; supprimé pour respecter CSS 2.1 */
+	color:#cccccc;
+}
+div.comment_hidden,
+div.comment_hidden ul li .li {
+	/* opacity: 0.5; supprimé pour respecter CSS 2.1 */
+	color:#cccccc;
+}
+div.dokuwiki .comment_wrapper .comment_hidden .comment_head  {
+	color:#cccccc;
+}
+
+img.illustration {
+	margin:0;
+}
+
+img.left {
+	float:left;
+	margin-right:4px;
+}
+img.right {
+	float:right;
+	margin-left:4px;
+}
+
+/* Les images */
+div.image_alterenergies {
+	font-style:italic;
+	text-align:center;
+	overflow:auto;
+	margin-top:4px;
+	margin-bottom:4px;
+}

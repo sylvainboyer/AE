@@ -1,0 +1,21 @@
+﻿/* @font-face kit by Fonts2u (http://www.fonts2u.com) */ 
+@font-face {
+	font-family: "Hauracherell NC";
+	src: url("../font/Hauracherell_NC.eot?") format("eot"), url("../font/Hauracherell_NC.woff") format("woff"), url("../font/Hauracherell_NC.ttf") format("truetype"), url("../font/Hauracherell_NC.svg#HauracherellNC") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "FuturaC";
+	src: url("../font/FuturaStd-Condensed.otf?") format("eot"), url("../font/FuturaStd-Condensed.ttf") format("truetype"), url("../font/FuturaStd-Condensed.svg#FuturaStd-Condensed") format("svg"), url("../font/FuturaStd-Condensed.otf") format("otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "FuturaCL";
+	src: url("../font/FuturaStd-CondensedLight.otf?") format("eot"), url("../font/FuturaStd-CondensedLight.ttf") format("truetype"), url("../font/FuturaStd-CondensedLight.svg#FuturaStd-CondensedLight") format("svg"), url("../font/FuturaStd-CondensedLight.otf") format("otf");
+	font-weight: normal;
+	font-style: normal;
+}
