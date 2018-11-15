@@ -2,20 +2,24 @@
 $DEF_ANNEE = "2017";
 $JOURS = array
   (
-  array("samedi","7","octobre"),
-  array("dimanche","8","octobre"),
-  array("samedi","14","octobre"),
-  array("dimanche","15","octobre"),
+  array("samedi","7","10"),
+  array("dimanche","8","10"),
+  array("samedi","14","10"),
+  array("dimanche","15","10"),
   );
 
-$DEF_SAMAM = "Samedi 7/10 - 10 h";
-$DEF_SAMPM = "Samedi 7/10 - 15 h";
-$DEF_DIMAM = "Dimanche 8/10 - 10 h";
-$DEF_DIMPM = "Dimanche 8/10 - 15 h";
-$DEF_SAM2AM = "Samedi 14/10 - 10 h";
-$DEF_SAM2PM = "Samedi 14/10 - 15 h";
-$DEF_DIM2AM = "Dimanche 15/10 - 10 h";
-$DEF_DIM2PM = "Dimanche 15/10 - 15 h";
+$CRENEAUX = array("AM"=>"10", "PM"=>"15");
+
+$MOIS = array("1"=>"janvier", "2"=>"février", "3"=>"mars", "4"=>"avril", "5"=>"mai", "6"=>"juin", "7"=>"juillet", "8"=>"août", "9"=>"septembre", "10"=>"octobre", "11"=>"novembre", "12"=>"décembre");
+
+$DEF_SAMAM = ucfirst($JOURS[0][0]).' '.$JOURS[0][1].'/'..$JOURS[0][2].' - '.$CRENEAUX["AM"].' h';
+$DEF_SAMPM = ucfirst($JOURS[0][0]).' '.$JOURS[0][1].'/'..$JOURS[0][2].' - '.$CRENEAUX["PM"].' h';
+$DEF_DIMAM = ucfirst($JOURS[1][0]).' '.$JOURS[1][1].'/'..$JOURS[1][2].' - '.$CRENEAUX["AM"].' h';
+$DEF_DIMPM = ucfirst($JOURS[1][0]).' '.$JOURS[1][1].'/'..$JOURS[1][2].' - '.$CRENEAUX["PM"].' h';
+$DEF_SAM2AM = ucfirst($JOURS[2][0]).' '.$JOURS[2][1].'/'..$JOURS[2][2].' - '.$CRENEAUX["AM"].' h';
+$DEF_SAM2PM = ucfirst($JOURS[2][0]).' '.$JOURS[2][1].'/'..$JOURS[2][2].' - '.$CRENEAUX["PM"].' h';
+$DEF_DIM2AM = ucfirst($JOURS[3][0]).' '.$JOURS[3][1].'/'..$JOURS[3][2].' - '.$CRENEAUX["AM"].' h';
+$DEF_DIM2PM = ucfirst($JOURS[3][0]).' '.$JOURS[3][1].'/'..$JOURS[3][2].' - '.$CRENEAUX["PM"].' h';
 
 $DEF_DECONNEXION  = '    	<div id="page-edition-dec">';
 $DEF_DECONNEXION .= '			<div id="page-edition-arriere-plan-dec">';

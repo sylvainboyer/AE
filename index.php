@@ -82,9 +82,9 @@ $NB_JOURS = count($JOURS);
 							}
 							$output.=$JOURS[$x][0]." ".$JOURS[$x][1];
 							if ($x==($NB_JOURS - 1)){
-								$output.=" ".$JOURS[$x][2];
+								$output.=" ".$MOIS[$JOURS[$x][2]];
 							} elseif ($JOURS[$x][2] != $JOURS[$x+1][2]){
-								$output.=" ".$JOURS[$x][2];
+								$output.=" ".$MOIS[$JOURS[$x][2]];
 							}
 							if ($x==($NB_JOURS - 1)){
 								$output.=".</span>";
@@ -176,25 +176,25 @@ function whichDays($a_data){
 	$s_day = '<div class="txt_dispo">Disponibilités : </div>
 			<div class="picto_jours">
 				<div class="hv">
-					<div class="hv1">10h 15h</div>
-					<div class="hv2">10h 15h</div>
+					<div class="hv1">'.$CRENEAUX["AM"].'h '.$CRENEAUX["PM"].'h</div>
+					<div class="hv2">'.$CRENEAUX["AM"].'h '.$CRENEAUX["PM"].'h</div>
 				</div>
-				<div class="sam">'.$jour1.' '.substr($JOURS[0][2],0,3).' :&nbsp;&nbsp;&nbsp;
-					<span class="picto"><img alt="picto1" src="gfx/'.($j11==true?"oui":"non").'.png" title="'.$jour1.' à 10h : visite '.($j11==true?"possible":"impossible").'"></span>
-					<span class="picto"><img alt="picto2" src="gfx/'.($j12==true?"oui":"non").'.png" title="'.$jour1.' à 15h : visite '.($j12==true?"possible":"impossible").'"></span>
+				<div class="sam">'.$jour1.' '.substr($MOIS[$JOURS[0][2]],0,3).' :&nbsp;&nbsp;&nbsp;
+					<span class="picto"><img alt="picto1" src="gfx/'.($j11==true?"oui":"non").'.png" title="'.$jour1.' à '.$CRENEAUX["AM"].'h : visite '.($j11==true?"possible":"impossible").'"></span>
+					<span class="picto"><img alt="picto2" src="gfx/'.($j12==true?"oui":"non").'.png" title="'.$jour1.' à '.$CRENEAUX["PM"].'h : visite '.($j12==true?"possible":"impossible").'"></span>
 				</div>
-				<div class="dim">'.$jour2.' '.substr($JOURS[1][2],0,3).' :&nbsp;&nbsp;
-					<span class="picto"><img alt="picto3" src="gfx/'.($j21==true?"oui":"non").'.png" title="'.$jour2.' à 10h : visite '.($j21==true?"possible":"impossible").'"></span>
-					<span class="picto"><img alt="picto4" src="gfx/'.($j22==true?"oui":"non").'.png" title="'.$jour2.' à 15h : visite '.($j22==true?"possible":"impossible").'"></span>
+				<div class="dim">'.$jour2.' '.substr($MOIS[$JOURS[1][2]],0,3).' :&nbsp;&nbsp;
+					<span class="picto"><img alt="picto3" src="gfx/'.($j21==true?"oui":"non").'.png" title="'.$jour2.' à '.$CRENEAUX["AM"].'h : visite '.($j21==true?"possible":"impossible").'"></span>
+					<span class="picto"><img alt="picto4" src="gfx/'.($j22==true?"oui":"non").'.png" title="'.$jour2.' à '.$CRENEAUX["PM"].'h : visite '.($j22==true?"possible":"impossible").'"></span>
 				</div>
 				<br />
-				<div class="sam">'.$jour3.' '.substr($JOURS[2][2],0,3).' :&nbsp;
-					<span class="picto"><img alt="picto5" src="gfx/'.($j31==true?"oui":"non").'.png" title="'.$jour3.' à 10h : visite '.($j31==true?"possible":"impossible").'"></span>
-					<span class="picto"><img alt="picto6" src="gfx/'.($j32==true?"oui":"non").'.png" title="'.$jour3.' à 15h : visite '.($j32==true?"possible":"impossible").'"></span>
+				<div class="sam">'.$jour3.' '.substr($MOIS[$JOURS[2][2]],0,3).' :&nbsp;
+					<span class="picto"><img alt="picto5" src="gfx/'.($j31==true?"oui":"non").'.png" title="'.$jour3.' à '.$CRENEAUX["AM"].'h : visite '.($j31==true?"possible":"impossible").'"></span>
+					<span class="picto"><img alt="picto6" src="gfx/'.($j32==true?"oui":"non").'.png" title="'.$jour3.' à '.$CRENEAUX["PM"].'h : visite '.($j32==true?"possible":"impossible").'"></span>
 				</div>
-				<div class="dim">'.$jour4.' '.substr($JOURS[3][2],0,3).' :
-					<span class="picto"><img alt="picto7" src="gfx/'.($j41==true?"oui":"non").'.png" title="'.$jour4.' à 10h : visite '.($j41==true?"possible":"impossible").'"></span>
-					<span class="picto"><img alt="picto8" src="gfx/'.($j42==true?"oui":"non").'.png" title="'.$jour4.' à 15h : visite '.($j42==true?"possible":"impossible").'"></span>
+				<div class="dim">'.$jour4.' '.substr($MOIS[$JOURS[3][2]],0,3).' :
+					<span class="picto"><img alt="picto7" src="gfx/'.($j41==true?"oui":"non").'.png" title="'.$jour4.' à '.$CRENEAUX["AM"].'h : visite '.($j41==true?"possible":"impossible").'"></span>
+					<span class="picto"><img alt="picto8" src="gfx/'.($j42==true?"oui":"non").'.png" title="'.$jour4.' à '.$CRENEAUX["PM"].'h : visite '.($j42==true?"possible":"impossible").'"></span>
 				</div>
 			</div>';
 	return $s_day;
