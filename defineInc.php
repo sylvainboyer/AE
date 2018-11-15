@@ -1,13 +1,16 @@
 <?php
+// À extraire de la BDD
 $DEF_ANNEE = "2017";
+// À extraire de la BDD
 $JOURS = array
-  (
-  array("samedi","7","10"),
-  array("dimanche","8","10"),
-  array("samedi","14","10"),
-  array("dimanche","15","10"),
-  );
+	(
+	array("samedi","7","10"),
+	array("dimanche","8","10"),
+	array("samedi","14","10"),
+	array("dimanche","15","10"),
+	);
 
+// À extraire de la BDD
 $CRENEAUX = array("AM"=>"10", "PM"=>"15");
 
 $MOIS = array("1"=>"janvier", "2"=>"février", "3"=>"mars", "4"=>"avril", "5"=>"mai", "6"=>"juin", "7"=>"juillet", "8"=>"août", "9"=>"septembre", "10"=>"octobre", "11"=>"novembre", "12"=>"décembre");
