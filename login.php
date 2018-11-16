@@ -1,6 +1,6 @@
 <?php
 ob_start('ob_gzhandler');
-$ttl = 4*24*3600; 
+$ttl = 4*24*3600;
 session_set_cookie_params($ttl);
 ini_set('session.gc_maxlifetime', $ttl);
 session_name('eceh');
@@ -44,33 +44,6 @@ include ('dbInc.php');
 	<script type="text/javascript" charset="utf-8" src="js/login.js"></script>
 	<script type="text/javascript" src="js/map.js"></script>
 	<link rel="icon" type="image/png" href="gfx/favicon.png" />
-<!--	Correctif pour l'affichage de #contenu-page dans IE6 qui ne connait pas les contextes de formatage :
-		http://css.alsacreations.com/Faire-une-mise-en-page-sans-tableaux/design-trois-colonnes-positionnement-flottant
-		Et autres...-->
-<!--[if lte IE 6]>
-	<style type="text/css">
-	#page-contenu {
-		overflow: visible;
-		height:1px;
-	}
-	#sommaire-gauche {
-		margin-left:4px;
-	}
-	#bandeau {
-		overflow: visible;
-		border-bottom:0;
-	}
-	#titre-alterenergies {
-		border-bottom:1px solid #036bc2;
-	}
-	#page-edition-arriere-plan{
-		//overflow:visible;
-	}
-	#page-edition{width:100%;}
-	.footerinc{overflow:visible;}
-	div.dokuwiki{overflow:hidden;}
-	</style>
-<![endif]-->
 </head>
 <body>
 <div class="eceh">
@@ -121,7 +94,7 @@ include ('dbInc.php');
 						</div>
 					</form>
 				</div>
-			</div><!-- Fin de #page-contenu --> 
+			</div><!-- Fin de #page-contenu -->
 		</div><!-- fin DIV #deux-colonnes -->
 		<div style="clear: both;"></div>
 		<?php echo $DEF_ACCUEIL_B; // bouton deconnexion haut et bas ?>

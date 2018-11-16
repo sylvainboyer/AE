@@ -13,6 +13,8 @@ $JOURS = array
 // À extraire de la BDD
 $CRENEAUX = array("AM"=>"10", "PM"=>"15");
 
+$NB_JOURS = count($JOURS);
+
 $MOIS = array("1"=>"janvier", "2"=>"février", "3"=>"mars", "4"=>"avril", "5"=>"mai", "6"=>"juin", "7"=>"juillet", "8"=>"août", "9"=>"septembre", "10"=>"octobre", "11"=>"novembre", "12"=>"décembre");
 
 $DEF_SAMAM = ucfirst($JOURS[0][0]).' '.$JOURS[0][1].'/'..$JOURS[0][2].' - '.$CRENEAUX["AM"].' h';
