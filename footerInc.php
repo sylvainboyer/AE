@@ -1,9 +1,6 @@
 	<div class="footerinc">
 		<p class="footer">Alter’énergies ~ 8 allée des Rossignols − 37170 Chambray-lès-Tours ~ infos@alterenergies.org</p>
 		<p class="footer">Site réalisé par Alter'énergies ~
-<!--<a target="_blank" href="/feed.php" title="Recent changes RSS feed">
-	<img src="gfx/button-rss.png" width="80" height="15" alt="Recent changes RSS feed />
-</a>-->
 			<a href="http://www.php.net/" title="Powered by PHP">
 				<img src="gfx/button-php.gif" alt="Powered by PHP" height="15" width="80" /></a>
 
