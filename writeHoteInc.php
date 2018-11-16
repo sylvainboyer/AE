@@ -28,7 +28,6 @@
 						<span class="hote">'.$data["nom"].'</span>
 						<br />
 						<div class="ville">'.$data["ville"].'</div>
-						<!--<span class="icone-carte" id="ic.'.$data['ordre_aff'].'"></span>-->
 						<div class="places">
 							<div class="plab">
 								places disponibles :
@@ -41,7 +40,6 @@
 		}else{
 			echo '					<div class="psam">
 								sam.'.$DEF_SAM1.' '.$DEF_AM.'h
-								<!--<div>'.$data['placesSamAM'].'</div>-->
 								<div>'.($data['placesSamAM'] - $nbP[1]).'</div>
 							</div>';
 		}
@@ -86,7 +84,6 @@
 		}else{
 			echo '					<div class="psam">
 								sam.'.$DEF_SAM2.' '.$DEF_AM.'h
-								<!--<div>'.$data['placesSam2AM'].'</div>-->
 								<div>'.($data['placesSam2AM'] - $nbP[5]).'</div>
 							</div>';
 		}
