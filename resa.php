@@ -182,10 +182,10 @@ switch($action) {
 /* ******************************************************************************************** */
 		if($do == 'ajouter' AND $creneau > 0 AND $idH > 0 AND $nb > 0 AND $errMsg == ""){
 			// test nb places
-			$sql_S = 'SELECT id, nom, placesSamAM, placesSamPM, placesDimAM, placesDimPM, placesSam2AM, placesSam2PM, placesDim2AM, placesDim2PM FROM '.$s_tablePrefix.'eceh_hote WHERE id='.$idH;
+			$sql_S = 'SELECT id, nom, placesSamAM, placesSamPM, placesDimAM, placesDimPM, placesSam2AM, placesSam2PM, placesDim2AM, placesDim2PM, placesSam3AM, placesSam3PM, placesDim3AM, placesDim3PM FROM '.$s_tablePrefix.'eceh_hote WHERE id='.$idH;
 			$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
 			if ($data = mysql_fetch_array($query)){
-				$disp = $creneau == 1 ? $data['placesSamAM'] : ($creneau == 2 ? $data['placesSamPM'] : ($creneau == 3 ? $data['placesDimAM'] : ($creneau == 4 ? $data['placesDimPM'] : ($creneau == 5 ? $data['placesSam2AM'] : ($creneau == 6 ? $data['placesSam2PM'] : ($creneau == 7 ? $data['placesDim2AM'] : ($creneau == 8 ? $data['placesDim2PM'] : 0)))))));
+				$disp = $creneau == 1 ? $data['placesSamAM'] : ($creneau == 2 ? $data['placesSamPM'] : ($creneau == 3 ? $data['placesDimAM'] : ($creneau == 4 ? $data['placesDimPM'] : ($creneau == 5 ? $data['placesSam2AM'] : ($creneau == 6 ? $data['placesSam2PM'] : ($creneau == 7 ? $data['placesDim2AM'] : ($creneau == 8 ? $data['placesDim2PM'] : ($creneau == 9 ? $data['placesSam3AM'] : ($creneau == 10 ? $data['placesSam3PM'] : ($creneau == 11 ? $data['placesDim3AM'] : ($creneau == 12 ? $data['placesDim3PM'] : 0)))))))))));
 			}else{
 				$disp = -1;
 			}
@@ -281,7 +281,7 @@ switch($action) {
 			$sql_S = 'SELECT id, nom, placesSamAM, placesSamPM, placesDimAM, placesDimPM, placesSam2AM, placesSam2PM, placesDim2AM, placesDim2PM FROM '.$s_tablePrefix.'eceh_hote WHERE id='.$idH;
 			$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
 			if ($data = mysql_fetch_array($query)){
-				$disp = $creneau == 1 ? $data['placesSamAM'] : ($creneau == 2 ? $data['placesSamPM'] : ($creneau == 3 ? $data['placesDimAM'] : ($creneau == 4 ? $data['placesDimPM'] : ($creneau == 5 ? $data['placesSam2AM'] : ($creneau == 6 ? $data['placesSam2PM'] : ($creneau == 7 ? $data['placesDim2AM'] : ($creneau == 8 ? $data['placesDim2PM'] : 0)))))));
+				$disp = $creneau == 1 ? $data['placesSamAM'] : ($creneau == 2 ? $data['placesSamPM'] : ($creneau == 3 ? $data['placesDimAM'] : ($creneau == 4 ? $data['placesDimPM'] : ($creneau == 5 ? $data['placesSam2AM'] : ($creneau == 6 ? $data['placesSam2PM'] : ($creneau == 7 ? $data['placesDim2AM'] : ($creneau == 8 ? $data['placesDim2PM'] : ($creneau == 9 ? $data['placesSam3AM'] : ($creneau == 10 ? $data['placesSam3PM'] : ($creneau == 11 ? $data['placesDim3AM'] : ($creneau == 12 ? $data['placesDim3PM'] : 0)))))))))));
 			}else{
 				$disp = 0;
 			}
@@ -347,6 +347,10 @@ $viewDim2Pm = "'cache'";
 $viewDim2Am = "'cache'";
 $viewSam2Pm = "'cache'";
 $viewSam2Am = "'cache'";
+$viewDim3Pm = "'cache'";
+$viewDim3Am = "'cache'";
+$viewSam3Pm = "'cache'";
+$viewSam3Am = "'cache'";
 if (!($action == "login" OR $action == "") OR !($nom == "" OR $prenom == "")){
 	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=1';
 	$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
@@ -380,37 +384,73 @@ if (!($action == "login" OR $action == "") OR !($nom == "" OR $prenom == "")){
 		$viewDimPm = "visible";
 		$nbDimPm = $data['nb_pers'];
 	}
-	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=5';
-	$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
-	if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
-		$libSam2Am = html_entity_decode(htmlentities($data['n']));
-		$titSam2Am = html_entity_decode(htmlentities($data['ad']));
-		$viewSam2Am = "visible";
-		$nbSam2Am = $data['nb_pers'];
+	if ($NB_JOURS >= 4) {
+		$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=5';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libSam2Am = html_entity_decode(htmlentities($data['n']));
+			$titSam2Am = html_entity_decode(htmlentities($data['ad']));
+			$viewSam2Am = "visible";
+			$nbSam2Am = $data['nb_pers'];
+		}
+		$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=6';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libSam2Pm = html_entity_decode(htmlentities($data['n']));
+			$titSam2Pm = html_entity_decode(htmlentities($data['ad']));
+			$viewSam2Pm = "visible";
+			$nbSam2Pm = $data['nb_pers'];
+		}
+		$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=7';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libDim2Am = html_entity_decode(htmlentities($data['n']));
+			$titDim2Am = html_entity_decode(htmlentities($data['ad']));
+			$viewDim2Am = "visible";
+			$nbDim2Am = $data['nb_pers'];
+		}
+	  	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=8';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libDim2Pm = html_entity_decode(htmlentities($data['n']));
+			$titDim2Pm = html_entity_decode(htmlentities($data['ad']));
+			$viewDim2Pm = "visible";
+			$nbDim2Pm = $data['nb_pers'];
+		}
 	}
-	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=6';
-	$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
-	if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
-		$libSam2Pm = html_entity_decode(htmlentities($data['n']));
-		$titSam2Pm = html_entity_decode(htmlentities($data['ad']));
-		$viewSam2Pm = "visible";
-		$nbSam2Pm = $data['nb_pers'];
-	}
-	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=7';
-	$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
-	if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
-		$libDim2Am = html_entity_decode(htmlentities($data['n']));
-		$titDim2Am = html_entity_decode(htmlentities($data['ad']));
-		$viewDim2Am = "visible";
-		$nbDim2Am = $data['nb_pers'];
-	}
-  	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=8';
-	$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
-	if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
-		$libDim2Pm = html_entity_decode(htmlentities($data['n']));
-		$titDim2Pm = html_entity_decode(htmlentities($data['ad']));
-		$viewDim2Pm = "visible";
-		$nbDim2Pm = $data['nb_pers'];
+	if ($NB_JOURS == 6) {
+		$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=9';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libSam3Am = html_entity_decode(htmlentities($data['n']));
+			$titSam3Am = html_entity_decode(htmlentities($data['ad']));
+			$viewSam3Am = "visible";
+			$nbSam3Am = $data['nb_pers'];
+		}
+		$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=10';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libSam3Pm = html_entity_decode(htmlentities($data['n']));
+			$titSam3Pm = html_entity_decode(htmlentities($data['ad']));
+			$viewSam3Pm = "visible";
+			$nbSam3Pm = $data['nb_pers'];
+		}
+		$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=11';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libDim3Am = html_entity_decode(htmlentities($data['n']));
+			$titDim3Am = html_entity_decode(htmlentities($data['ad']));
+			$viewDim3Am = "visible";
+			$nbDim3Am = $data['nb_pers'];
+		}
+	  	$sql_S = 'SELECT '.$s_tablePrefix.'eceh_hote.nom as n,'.$s_tablePrefix.'eceh_hote.adresse as ad, nb_pers FROM '.$s_tablePrefix.'eceh_inscription, '.$s_tablePrefix.'eceh_hote WHERE '.$s_tablePrefix.'eceh_inscription.id_h = '.$s_tablePrefix.'eceh_hote.id AND '.$s_tablePrefix.'eceh_inscription.id_v='.$idV.' AND creneau=12';
+		$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
+		if ($data = mysql_fetch_array($query)){ // visiteur deja inscrit
+			$libDim3Pm = html_entity_decode(htmlentities($data['n']));
+			$titDim3Pm = html_entity_decode(htmlentities($data['ad']));
+			$viewDim3Pm = "visible";
+			$nbDim3Pm = $data['nb_pers'];
+		}
 	}
 	mysql_free_result($query);
 }
@@ -418,9 +458,16 @@ if (!($action == "login" OR $action == "") OR !($nom == "" OR $prenom == "")){
 $tr="";
 if ((strtoupper($nom) == "ALTERENERGIES") AND strtoupper($prenom) == "ADMIN"){
 	$bAdmin = true;
-	$tr = "<thead><tr><th class='col1'>Récap. par hotes</th><th class='col2'>sam.".$DEF_SAM1." ".$DEF_AM."h</th><th class='col2'>sam.".$DEF_SAM1." ".$DEF_PM."h</th><th class='col2'>dim.".$DEF_DIM1." ".$DEF_AM."h</th><th class='col2'>dim.".$DEF_DIM1." ".$DEF_PM."h</th><th class='col2'>sam.".$DEF_SAM2." ".$DEF_AM."h</th><th class='col2'>sam.".$DEF_SAM2." ".$DEF_PM."h</th><th class='col2'>dim.".$DEF_DIM2." ".$DEF_AM."h</th><th class='col2'>dim.".$DEF_DIM2." ".$DEF_PM."h</th></tr></thead>\n";
+	$tr = "<thead><tr><th class='col1'>Récap. par hotes</th><th class='col2'>sam.".$DEF_SAM1." ".$DEF_AM."h</th><th class='col2'>sam.".$DEF_SAM1." ".$DEF_PM."h</th><th class='col2'>dim.".$DEF_DIM1." ".$DEF_AM."h</th><th class='col2'>dim.".$DEF_DIM1." ".$DEF_PM."h</th>";
+	if ($NB_JOURS >= 4){
+		$tr .=  "<th class='col2'>sam.".$DEF_SAM2." ".$DEF_AM."h</th><th class='col2'>sam.".$DEF_SAM2." ".$DEF_PM."h</th><th class='col2'>dim.".$DEF_DIM2." ".$DEF_AM."h</th><th class='col2'>dim.".$DEF_DIM2." ".$DEF_PM."h</th>";
+	}
+	if ($NB_JOURS == 6){
+		$tr .=  "<th class='col2'>sam.".$DEF_SAM3." ".$DEF_AM."h</th><th class='col2'>sam.".$DEF_SAM3." ".$DEF_PM."h</th><th class='col2'>dim.".$DEF_DIM3." ".$DEF_AM."h</th><th class='col2'>dim.".$DEF_DIM3." ".$DEF_PM."h</th>";
+	}
+	$tr .=  "</tr></thead>\n";
 
-	$sql_S = 'SELECT id, ordre_aff, nom, placesSamAM, placesSamPM, placesDimAM, placesDimPM, placesSam2AM, placesSam2PM, placesDim2AM, placesDim2PM FROM '.$s_tablePrefix.'eceh_hote WHERE ordre_aff>0 ORDER BY ordre_aff';
+	$sql_S = 'SELECT id, ordre_aff, nom, placesSamAM, placesSamPM, placesDimAM, placesDimPM, placesSam2AM, placesSam2PM, placesDim2AM, placesDim2PM, placesSam3AM, placesSam3PM, placesDim3AM, placesDim3PM FROM '.$s_tablePrefix.'eceh_hote WHERE ordre_aff>0 ORDER BY ordre_aff';
 	$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
 	while ($data = mysql_fetch_array($query)){
 		if ($data['placesSamPM'] != -1){
@@ -430,7 +477,8 @@ if ((strtoupper($nom) == "ALTERENERGIES") AND strtoupper($prenom) == "ADMIN"){
 				$places = $data['placesDimPM']." places";
 			}elseif ($data['placesDimAM'] != 0){
 				$places = $data['placesDimAM']." places";
-			}elseif ($data['placesSam2AM'] != 0){
+			}else
+			if ($data['placesSam2AM'] != 0){
 				$places = $data['placesSam2AM']." places";
 			}elseif ($data['placesSam2PM'] != 0){
 				$places = $data['placesSam2PM']." places";
@@ -438,6 +486,15 @@ if ((strtoupper($nom) == "ALTERENERGIES") AND strtoupper($prenom) == "ADMIN"){
 				$places = $data['placesDim2PM']." places";
 			}elseif ($data['placesDim2AM'] != 0){
 				$places = $data['placesDim2AM']." places";
+			}else
+			if ($data['placesSam3AM'] != 0){
+				$places = $data['placesSam3AM']." places";
+			}elseif ($data['placesSam3PM'] != 0){
+				$places = $data['placesSam3PM']." places";
+			}elseif ($data['placesDim3PM'] != 0){
+				$places = $data['placesDim3PM']." places";
+			}elseif ($data['placesDim3AM'] != 0){
+				$places = $data['placesDim3AM']." places";
 			}else{
 				$places = $data['placesSamAM']." places";
 			}
@@ -445,8 +502,8 @@ if ((strtoupper($nom) == "ALTERENERGIES") AND strtoupper($prenom) == "ADMIN"){
 			$places = "Visites libres";
 		}
     	$tr .= "<tbody><tr><td>[".$data['ordre_aff']."] ".reduit_texte($data['nom'], 20, 20, ' ', '...')."<br/>".$places;
-    	for ($i = 1; $i < 9; ++$i){
-      		$class = (!$data['placesDim2PM'] && $i == 8) || (!$data['placesDim2AM'] && $i == 7) || (!$data['placesSam2PM'] && $i ==6) || (!$data['placesSam2AM'] && $i ==5) || (!$data['placesDimPM'] && $i == 4) || (!$data['placesDimAM'] && $i == 3) || (!$data['placesSamPM'] && $i ==2) || (!$data['placesSamAM'] && $i ==1) ? " class='grey'" : " class=\"col2\"";
+    	for ($i = 1; $i < 13; ++$i){
+      		$class = (!$data['placesDim3PM'] && $i == 12) || (!$data['placesDim3AM'] && $i == 11) || (!$data['placesSam3PM'] && $i == 10) || (!$data['placesSam3AM'] && $i == 9) || (!$data['placesDim2PM'] && $i == 8) || (!$data['placesDim2AM'] && $i == 7) || (!$data['placesSam2PM'] && $i ==6) || (!$data['placesSam2AM'] && $i ==5) || (!$data['placesDimPM'] && $i == 4) || (!$data['placesDimAM'] && $i == 3) || (!$data['placesSamPM'] && $i ==2) || (!$data['placesSamAM'] && $i ==1) ? " class='grey'" : " class=\"col2\"";
 
       		$sql2_S = 'SELECT sum(nb_pers) as nb FROM '.$s_tablePrefix.'eceh_inscription WHERE id_h='.$data['id'].' AND creneau='.$i;
       		$query2 = mysql_query($sql2_S) or die ("<br />erreur sur : " . $sql2_S);
@@ -476,7 +533,14 @@ if ((strtoupper($nom) == "ALTERENERGIES") AND strtoupper($prenom) == "ADMIN"){
 	$tr .= "<tr><td class=\"ligneSepF\" colspan=9></td></tr>\n";
 	$tr .= "<tr><td colspan=9></td></tr>\n";
 	$tr .= "<tr><td class=\"ligneSep\" colspan=9></td></tr>\n";
-	$tr .= "<tr><th>Récap. par visiteurs</th><th>sam.".$DEF_SAM1." ".$DEF_AM."h</th><th>sam.".$DEF_SAM1." ".$DEF_PM."h</th><th>dim.".$DEF_DIM1." ".$DEF_AM."h</th><th>dim.".$DEF_DIM1." ".$DEF_PM."h</th><th>sam.".$DEF_SAM2." ".$DEF_AM."h</th><th>sam.".$DEF_SAM2." ".$DEF_PM."h</th><th>dim.".$DEF_DIM2." ".$DEF_AM."h</th><th>dim.".$DEF_DIM2." ".$DEF_PM."h</th></tr>\n";
+	$tr .= "<tr><th>Récap. par visiteurs</th><th>sam.".$DEF_SAM1." ".$DEF_AM."h</th><th>sam.".$DEF_SAM1." ".$DEF_PM."h</th><th>dim.".$DEF_DIM1." ".$DEF_AM."h</th><th>dim.".$DEF_DIM1." ".$DEF_PM."h</th>";
+	if ($NB_JOURS >= 4) {
+		$tr .= "<th>sam.".$DEF_SAM2." ".$DEF_AM."h</th><th>sam.".$DEF_SAM2." ".$DEF_PM."h</th><th>dim.".$DEF_DIM2." ".$DEF_AM."h</th><th>dim.".$DEF_DIM2." ".$DEF_PM."h</th>";
+	}
+	if ($NB_JOURS == 6) {
+		$tr .= "<th>sam.".$DEF_SAM3." ".$DEF_AM."h</th><th>sam.".$DEF_SAM3." ".$DEF_PM."h</th><th>dim.".$DEF_DIM3." ".$DEF_AM."h</th><th>dim.".$DEF_DIM3." ".$DEF_PM."h</th>";
+	}
+	$tr .= "</tr>\n";
 	$sql_S = 'SELECT * FROM '.$s_tablePrefix.'eceh_visiteur ORDER BY nom';
 	$query = mysql_query($sql_S) or die ("<br />erreur (7) sur : " . $sql_S);
 	$data = mysql_fetch_array($query);
@@ -571,6 +635,18 @@ function logInscription($idH, $idV, $creneau, $nb, $s_tablePrefix){
 		case 8:
 			$quand = $DEF_DIM2PM;
 			break;
+		case 9:
+			$quand = $DEF_SAM3AM;
+			break;
+		case 10:
+			$quand = $DEF_SAM3PM;
+			break;
+		case 11:
+			$quand = $DEF_DIM3AM;
+			break;
+		case 12:
+			$quand = $DEF_DIM3PM;
+			break;
 	}
 
 	fputs($log_F, date("j M Y")." - ajoute -  (".$nb."p. ; " . $quand . ") ".$visiteur." -> ".$hote."\n");
@@ -589,6 +665,10 @@ function logAnnulation($idV, $creneau, $s_tablePrefix){
 	global $DEF_SAM2PM;
 	global $DEF_DIM2AM;
 	global $DEF_DIM2PM;
+	global $DEF_SAM3AM;
+	global $DEF_SAM3PM;
+	global $DEF_DIM3AM;
+	global $DEF_DIM3PM;
 
 	$creneau_A[1] = $DEF_SAMAM;
 	$creneau_A[2] = $DEF_SAMPM;
@@ -598,6 +678,10 @@ function logAnnulation($idV, $creneau, $s_tablePrefix){
 	$creneau_A[6] = $DEF_SAM2PM;
 	$creneau_A[7] = $DEF_DIM2AM;
 	$creneau_A[8] = $DEF_DIM2PM;
+	$creneau_A[9] = $DEF_SAM3AM;
+	$creneau_A[10] = $DEF_SAM3PM;
+	$creneau_A[11] = $DEF_DIM3AM;
+	$creneau_A[12] = $DEF_DIM3PM;
 
 	$log_F = fopen('log.txt', 'a');
 	$sql_S = 'SELECT * FROM '.$s_tablePrefix.'eceh_visiteur WHERE id='.$idV;
@@ -634,6 +718,10 @@ function confirm($id, $what, $cr, $s_tablePrefix){
 	global $DEF_SAM2PM;
 	global $DEF_DIM2AM;
 	global $DEF_DIM2PM;
+	global $DEF_SAM3AM;
+	global $DEF_SAM3PM;
+	global $DEF_DIM3AM;
+	global $DEF_DIM3PM;
 
 	$creneau[1] = strtolower(str_replace(" - ", " à ", $DEF_SAMAM));
 	$creneau[2] = strtolower(str_replace(" - ", " à ", $DEF_SAMPM));
@@ -643,6 +731,10 @@ function confirm($id, $what, $cr, $s_tablePrefix){
 	$creneau[6] = strtolower(str_replace(" - ", " à ", $DEF_SAM2PM));
 	$creneau[7] = strtolower(str_replace(" - ", " à ", $DEF_DIM2AM));
 	$creneau[8] = strtolower(str_replace(" - ", " à ", $DEF_DIM2PM));
+	$creneau[9] = strtolower(str_replace(" - ", " à ", $DEF_SAM3AM));
+	$creneau[10] = strtolower(str_replace(" - ", " à ", $DEF_SAM3PM));
+	$creneau[11] = strtolower(str_replace(" - ", " à ", $DEF_DIM3AM));
+	$creneau[12] = strtolower(str_replace(" - ", " à ", $DEF_DIM3PM));
 
 	$mailenvoye[0] = false;
 	//$strDebug = "confirm";
@@ -682,7 +774,7 @@ function confirm($id, $what, $cr, $s_tablePrefix){
 			}
 			$msg .= "<br />\r\nRésumé de vos réservations :<br />\r\n";
 			$resa = "";
-			for ($i = 1; $i < 9; $i++){
+			for ($i = 1; $i < 13; $i++){
 				$sql_S = 'SELECT nb_pers, nom, adresse FROM '.$s_tablePrefix.'eceh_hote, '.$s_tablePrefix.'eceh_inscription WHERE id_v='.$id.' AND id_h=id AND creneau='.$i;
 				$query = mysql_query($sql_S) or die ("<br />erreur sur : " . $sql_S);
 				if ($data = mysql_fetch_array($query)){
@@ -872,10 +964,26 @@ TODO
 										<option value='2'<?php echo $creneauSelected[2].">".$DEF_SAMPM;  ?></option>
 										<option value='3'<?php echo $creneauSelected[3].">".$DEF_DIMAM;  ?></option>
 										<option value='4'<?php echo $creneauSelected[4].">".$DEF_DIMPM;  ?></option>
+										<?php
+											if ($NB_JOURS >= 4) :
+											?>
 										<option value='5'<?php echo $creneauSelected[5].">".$DEF_SAM2AM;  ?></option>
 										<option value='6'<?php echo $creneauSelected[6].">".$DEF_SAM2PM;  ?></option>
 										<option value='7'<?php echo $creneauSelected[7].">".$DEF_DIM2AM;  ?></option>
 										<option value='8'<?php echo $creneauSelected[8].">".$DEF_DIM2PM;  ?></option>
+										<?php
+											endif;
+											?>
+										<?php
+											if ($NB_JOURS == 6) :
+											?>
+										<option value='9'<?php echo $creneauSelected[9].">".$DEF_SAM3AM;  ?></option>
+										<option value='10'<?php echo $creneauSelected[10].">".$DEF_SAM3PM;  ?></option>
+										<option value='11'<?php echo $creneauSelected[11].">".$DEF_DIM3AM;  ?></option>
+										<option value='12'<?php echo $creneauSelected[12].">".$DEF_DIM3PM;  ?></option>
+										<?php
+											endif;
+											?>
 									</select>
 								</p>
 								<p>
@@ -913,6 +1021,9 @@ TODO
 								<div id="dimPM" class=<?php echo $viewDimPm; ?> title="<?php echo $titDimPm; ?>"><?php echo "Dim.".$DEF_DIM1." ".$DEF_PM."h : "; ?><span id="libDimPm"><?php echo $libDimPm." - ".$nbDimPm." personne".($nbDimPm>1?"s":""); ?></span>
 									<input name="do[annuler4]" id="do[annuler4]" value="annuler4" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
 								</div>
+								<?php
+									if ($NB_JOURS >= 4) :
+									?>
 								<div id="sam2AM" class=<?php echo $viewSam2Am; ?> title="<?php echo $titSam2Am; ?>"><?php echo "Sam.".$DEF_SAM2." ".$DEF_AM."h : "; ?><span id="libSam2Am"><?php echo $libSam2Am." - ".$nbSam2Am." personne".($nbSam2Am>1?"s":""); ?></span>
 									<input name="do[annuler5]" id="do[annuler5]" value="annuler5" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
 								</div>
@@ -926,7 +1037,28 @@ TODO
 									<input name="do[annuler8]" id="do[annuler8]" value="annuler8" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
 								</div>
 								<?php
-								if($viewSamAm == "'cache'" AND $viewSamPm == "'cache'" AND $viewDimAm == "'cache'" AND $viewDimPm == "'cache'" AND $viewSam2Am == "'cache'" AND $viewSam2Pm == "'cache'" AND $viewDim2Am == "'cache'" AND $viewDim2Pm == "'cache'")
+									endif;
+									?>
+								<?php
+									if ($NB_JOURS == 6) :
+									?>
+									<div id="sam3AM" class=<?php echo $viewSam3Am; ?> title="<?php echo $titSam3Am; ?>"><?php echo "Sam.".$DEF_SAM3." ".$DEF_AM."h : "; ?><span id="libSam3Am"><?php echo $libSam3Am." - ".$nbSam3Am." personne".($nbSam3Am>1?"s":""); ?></span>
+										<input name="do[annuler5]" id="do[annuler5]" value="annuler5" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
+									</div>
+									<div id="sam3PM" class=<?php echo $viewSam3Pm; ?> title="<?php echo $titSam3Pm; ?>"><?php echo "Sam.".$DEF_SAM3." ".$DEF_PM."h : "; ?><span id="libSam3Pm"><?php echo $libSam3Pm." - ".$nbSam3Pm." personne".($nbSam3Pm>1?"s":""); ?></span>
+										<input name="do[annuler6]" id="do[annuler6]" value="annuler6" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
+									</div>
+									<div id="dim3AM" class=<?php echo $viewDim3Am; ?> title="<?php echo $titDim3Am; ?>"><?php echo "Dim.".$DEF_DIM3." ".$DEF_AM."h : "; ?><span id="libDim3Am"><?php echo $libDim3Am." - ".$nbDim3Am." personne".($nbDim3Am>1?"s":""); ?></span>
+										<input name="do[annuler7]" id="do[annuler7]" value="annuler7" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
+									</div>
+									<div id="dim3PM" class=<?php echo $viewDim3Pm; ?> title="<?php echo $titDim3Pm; ?>"><?php echo "Dim.".$DEF_DIM3." ".$DEF_PM."h : "; ?><span id="libDim3Pm"><?php echo $libDim3Pm." - ".$nbDim3Pm." personne".($nbDim3Pm>1?"s":""); ?></span>
+										<input name="do[annuler8]" id="do[annuler8]" value="annuler8" class="button img annule" type="image" src="gfx/boutons-annuler.gif">
+									</div>
+									<?php
+										endif;
+										?>
+								<?php
+								if($viewSamAm == "'cache'" AND $viewSamPm == "'cache'" AND $viewDimAm == "'cache'" AND $viewDimPm == "'cache'" AND $viewSam2Am == "'cache'" AND $viewSam2Pm == "'cache'" AND $viewDim2Am == "'cache'" AND $viewDim2Pm == "'cache'" AND $viewSam3Am == "'cache'" AND $viewSam3Pm == "'cache'" AND $viewDim3Am == "'cache'" AND $viewDim3Pm == "'cache'")
 									echo '<div id="nores" class="visible">Vous n\'avez plus aucune inscription.</div>';
 								?>
 							</fieldset>
