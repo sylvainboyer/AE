@@ -76,49 +76,97 @@
 								<div>'.($data['placesDimPM'] - $nbP[4]).'</div>
 							</div>';
 		}
-		if($data['placesSam2AM'] == 0){
-			echo '					<div class="p0">
-								sam.'.$DEF_SAM2.' '.$DEF_AM.'h
-								<div>nd</div>
-							</div>';
-		}else{
-			echo '					<div class="psam">
-								sam.'.$DEF_SAM2.' '.$DEF_AM.'h
-								<div>'.($data['placesSam2AM'] - $nbP[5]).'</div>
-							</div>';
+		if ($NB_JOURS >= 4) {
+			if($data['placesSam2AM'] == 0){
+				echo '					<div class="p0">
+									sam.'.$DEF_SAM2.' '.$DEF_AM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="psam">
+									sam.'.$DEF_SAM2.' '.$DEF_AM.'h
+									<div>'.($data['placesSam2AM'] - $nbP[5]).'</div>
+								</div>';
+			}
+			if($data['placesSam2PM'] == 0){
+				echo '					<div class="p0">
+									sam.'.$DEF_SAM2.' '.$DEF_PM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="pspm">
+									sam.'.$DEF_SAM2.' '.$DEF_PM.'h
+									<div>'.($data['placesSam2PM'] - $nbP[6]).'</div>
+								</div>';
+			}
+			if($data['placesDim2AM'] == 0){
+				echo '					<div class="p0">
+									dim.'.$DEF_DIM2.' '.$DEF_AM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="pdam">
+									dim.'.$DEF_DIM2.' '.$DEF_AM.'h
+									<div>'.($data['placesDim2AM'] - $nbP[7]).'</div>
+								</div>';
+			}
+			if($data['placesDim2PM'] == 0){
+				echo '					<div class="p0">
+									dim.'.$DEF_DIM2.' '.$DEF_PM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="pdpm">
+									dim.'.$DEF_DIM2.' '.$DEF_PM.'h
+									<div>'.($data['placesDim2PM'] - $nbP[8]).'</div>
+								</div>';
+			}
 		}
-		if($data['placesSam2PM'] == 0){
-			echo '					<div class="p0">
-								sam.'.$DEF_SAM2.' '.$DEF_PM.'h
-								<div>nd</div>
-							</div>';
-		}else{
-			echo '					<div class="pspm">
-								sam.'.$DEF_SAM2.' '.$DEF_PM.'h
-								<div>'.($data['placesSam2PM'] - $nbP[6]).'</div>
-							</div>';
-		}
-		if($data['placesDim2AM'] == 0){
-			echo '					<div class="p0">
-								dim.'.$DEF_DIM2.' '.$DEF_AM.'h
-								<div>nd</div>
-							</div>';
-		}else{
-			echo '					<div class="pdam">
-								dim.'.$DEF_DIM2.' '.$DEF_AM.'h
-								<div>'.($data['placesDim2AM'] - $nbP[7]).'</div>
-							</div>';
-		}
-		if($data['placesDim2PM'] == 0){
-			echo '					<div class="p0">
-								dim.'.$DEF_DIM2.' '.$DEF_PM.'h
-								<div>nd</div>
-							</div>';
-		}else{
-			echo '					<div class="pdpm">
-								dim.'.$DEF_DIM2.' '.$DEF_PM.'h
-								<div>'.($data['placesDim2PM'] - $nbP[8]).'</div>
-							</div>';
+		if ($NB_JOURS == 6) {
+			if($data['placesSam3AM'] == 0){
+				echo '					<div class="p0">
+									sam.'.$DEF_SAM3.' '.$DEF_AM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="psam">
+									sam.'.$DEF_SAM3.' '.$DEF_AM.'h
+									<div>'.($data['placesSam3AM'] - $nbP[5]).'</div>
+								</div>';
+			}
+			if($data['placesSam3PM'] == 0){
+				echo '					<div class="p0">
+									sam.'.$DEF_SAM3.' '.$DEF_PM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="pspm">
+									sam.'.$DEF_SAM3.' '.$DEF_PM.'h
+									<div>'.($data['placesSam3PM'] - $nbP[6]).'</div>
+								</div>';
+			}
+			if($data['placesDim3AM'] == 0){
+				echo '					<div class="p0">
+									dim.'.$DEF_DIM3.' '.$DEF_AM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="pdam">
+									dim.'.$DEF_DIM3.' '.$DEF_AM.'h
+									<div>'.($data['placesDim3AM'] - $nbP[7]).'</div>
+								</div>';
+			}
+			if($data['placesDim3PM'] == 0){
+				echo '					<div class="p0">
+									dim.'.$DEF_DIM3.' '.$DEF_PM.'h
+									<div>nd</div>
+								</div>';
+			}else{
+				echo '					<div class="pdpm">
+									dim.'.$DEF_DIM3.' '.$DEF_PM.'h
+									<div>'.($data['placesDim3PM'] - $nbP[8]).'</div>
+								</div>';
+			}
 		}
 		echo '					</div>
 					</div>
