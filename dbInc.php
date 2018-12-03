@@ -37,9 +37,17 @@ mysql_free_result($query_C);
 $sql_P = 'SELECT * FROM '.$s_tablePrefix.'eceh_params';
 $query_P = mysql_query($sql_P) or die ("<br />erreur sur : " . $sql_P);
 if($data_P = mysql_fetch_array($query_P)){
-	$DATE_DEB_INSCR = strtotime($data_P['date_deb_inscr']);
-	$DATE_FIN_INSCR = strtotime($data_P['date_fin_inscr']);
-	$INSCR_OUV = $data_P['inscr_ouv'];
+	$DATE_DEB_INSCR	= strtotime($data_P['date_deb_inscr']);
+	$DATE_FIN_INSCR	= strtotime($data_P['date_fin_inscr']);
+	$INSCR_OUV			= $data_P['inscr_ouv'];
+	$SAMEDI_1			= date("d/m/y",strtotime($data_P['samedi_1']));
+	$DIMANCHE_1			= date("d/m/y",strtotime($data_P['dimanche_1']));
+	$SAMEDI_2			= date("d/m/y",strtotime($data_P['samedi_2']));
+	$DIMANCHE_2			= date("d/m/y",strtotime($data_P['dimanche_2']));
+	$SAMEDI_3			= date("d/m/y",strtotime($data_P['samedi_3']));
+	$DIMANCHE_3			= date("d/m/y",strtotime($data_P['dimanche_3']));
+	$DEF_AM				= $data_P['heure_creneau_matin'];
+	$DEF_PM				= $data_P['heure_creneau_apres_midi'];
 }
 mysql_free_result($query_P);
 ?>
