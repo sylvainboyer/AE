@@ -1,27 +1,61 @@
 <?php
-// À extraire de la BDD
-$DEF_ANNEE = "2017";
-// À extraire de la BDD
+
+// Extrait de la BDD dans dbInc.php
+/*	$SAMEDI_1
+	$DIMANCHE_1
+	$SAMEDI_2
+	$DIMANCHE_2
+	$SAMEDI_3
+	$DIMANCHE_3
+	$DEF_AM
+	$DEF_PM
+	*/
+
+$NB_JOURS = 2;
+$SAMEDI_1	= explode("/",$SAMEDI_1,3);
+$DEF_ANNEE = $SAMEDI_1[2];
+$SAMEDI_1	= array("samedi",$SAMEDI_1[0],$SAMEDI_1[1]);
+$DIMANCHE_1	= explode("/",$DIMANCHE_1,3);
+$DIMANCHE_1	= array("dimanche",$DIMANCHE_1[0],$DIMANCHE_1[1]);
+$SAMEDI_2	= explode("/",$SAMEDI_2,3);
+$DIMANCHE_2	= explode("/",$DIMANCHE_2,3);
+if ($SAMEDI_2[2] == $DEF_ANNEE) {
+	$SAMEDI_2	= array("samedi",$SAMEDI_2[0],$SAMEDI_2[1]);
+	$DIMANCHE_2	= array("dimanche",$DIMANCHE_2[0],$DIMANCHE_2[1]);
+	$NB_JOURS = $NB_JOURS + 2;
+} else {
+	$SAMEDI_2	= array("","","");
+	$DIMANCHE_2	= array("","","");
+}
+$SAMEDI_3	= explode("/",$SAMEDI_3,3);
+$DIMANCHE_3	= explode("/",$DIMANCHE_3,3);
+if ($SAMEDI_3[2] == $DEF_ANNEE) {
+	$SAMEDI_3	= array("samedi",$SAMEDI_3[0],$SAMEDI_3[1]);
+	$DIMANCHE_3	= array("dimanche",$DIMANCHE_3[0],$DIMANCHE_3[1]);
+	$NB_JOURS = $NB_JOURS + 2;
+} else {
+	$SAMEDI_3	= array("","","");
+	$DIMANCHE_3	= array("","","");
+}
+
 $JOURS = array
 	(
-	array("samedi","7","10"),
-	array("dimanche","8","10"),
-	array("samedi","14","10"),
-	array("dimanche","15","10"),
+	$SAMEDI_1,
+	$DIMANCHE_1,
+	$SAMEDI_2,
+	$DIMANCHE_2,
+	$SAMEDI_3,
+	$DIMANCHE_3
 	);
 
-// À extraire de la BDD
-$CRENEAUX = array("AM"=>"10", "PM"=>"15");
-
-$NB_JOURS = count($JOURS);
+$CRENEAUX = array("AM"=>$DEF_AM, "PM"=>$DEF_PM);
 
 $DEF_SAM1 = $JOURS[0][1].'/'.$JOURS[0][2];
 $DEF_DIM1 = $JOURS[1][1].'/'.$JOURS[1][2];
 $DEF_SAM2 = $JOURS[2][1].'/'.$JOURS[2][2];
 $DEF_DIM2 = $JOURS[3][1].'/'.$JOURS[3][2];
-
-$DEF_AM = $CRENEAUX["AM"];
-$DEF_PM = $CRENEAUX["PM"];
+$DEF_SAM3 = $JOURS[4][1].'/'.$JOURS[4][2];
+$DEF_DIM3 = $JOURS[5][1].'/'.$JOURS[5][2];
 
 $MOIS = array("1"=>"janvier", "2"=>"février", "3"=>"mars", "4"=>"avril", "5"=>"mai", "6"=>"juin", "7"=>"juillet", "8"=>"août", "9"=>"septembre", "10"=>"octobre", "11"=>"novembre", "12"=>"décembre");
 
@@ -33,6 +67,10 @@ $DEF_SAM2AM = ucfirst($JOURS[2][0]).' '.$JOURS[2][1].'/'.$JOURS[2][2].' - '.$CRE
 $DEF_SAM2PM = ucfirst($JOURS[2][0]).' '.$JOURS[2][1].'/'.$JOURS[2][2].' - '.$CRENEAUX["PM"].' h';
 $DEF_DIM2AM = ucfirst($JOURS[3][0]).' '.$JOURS[3][1].'/'.$JOURS[3][2].' - '.$CRENEAUX["AM"].' h';
 $DEF_DIM2PM = ucfirst($JOURS[3][0]).' '.$JOURS[3][1].'/'.$JOURS[3][2].' - '.$CRENEAUX["PM"].' h';
+$DEF_SAM3AM = ucfirst($JOURS[4][0]).' '.$JOURS[4][1].'/'.$JOURS[4][2].' - '.$CRENEAUX["AM"].' h';
+$DEF_SAM3PM = ucfirst($JOURS[4][0]).' '.$JOURS[4][1].'/'.$JOURS[4][2].' - '.$CRENEAUX["PM"].' h';
+$DEF_DIM3AM = ucfirst($JOURS[5][0]).' '.$JOURS[5][1].'/'.$JOURS[5][2].' - '.$CRENEAUX["AM"].' h';
+$DEF_DIM3PM = ucfirst($JOURS[5][0]).' '.$JOURS[5][1].'/'.$JOURS[5][2].' - '.$CRENEAUX["PM"].' h';
 
 $DEF_DECONNEXION  = '    	<div id="page-edition-dec">';
 $DEF_DECONNEXION .= '			<div id="page-edition-arriere-plan-dec">';
