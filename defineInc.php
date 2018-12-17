@@ -38,6 +38,8 @@ if ($SAMEDI_3[2] == $DEF_ANNEE) {
 	$DIMANCHE_3	= array("","","");
 }
 
+$NB_CRENEAUX = $NB_JOURS * 2;
+
 $JOURS = array
 	(
 	$SAMEDI_1,
