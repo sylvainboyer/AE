@@ -1,5 +1,4 @@
 <?php
-
 	echo '					<div id="map" class="cache">
 					<img src="map/c-0.gif" alt="carte des chantiers" />
 					<p id="legendeMap">Cliquez sur la carte pour la masquer</p>
@@ -10,18 +9,18 @@
 				<div class="level1">
 					<ol id="olparticipants">';
 	$sql_S = 'SELECT * FROM '.$s_tablePrefix.'eceh_hote WHERE ordre_aff!=0 ORDER BY ordre_aff';
-	$query = mysql_query($sql_S) or die ("<br>erreur sur : " . $sql_S);
-	while($data = mysql_fetch_array($query)){
+	$query = $bdd->query($sql_S) or die ("<br>erreur sur : " . $sql_S);
+	while($data = $query->fetch()){
 		$dept = substr($data['cp'],0,2);
 		// pour chaque créneau
 		for($i = 1; $i < 9; ++$i){
 			$sql_N = 'SELECT SUM(nb_pers) AS nb FROM '.$s_tablePrefix.'eceh_inscription WHERE id_h='.$data['id'].' AND creneau='.$i;
-			$queryN = mysql_query($sql_N) or die ("<br />erreur sur : " . $sql_N);
+			$queryN = $bdd->query($sql_N) or die ("<br />erreur sur : " . $sql_N);
 			if ($dataN = mysql_fetch_row($queryN)){
 				$nbP[$i] = $dataN[0] != "" ? $dataN[0] : 0;
 			}
 		}
-		mysql_free_result($queryN);
+		$queryN->closeCursor();
 		echo '			<li class="level1 dpt'.$dept.'" id="p.'.$data['ordre_aff'].'">
 					<div class="li participants">
 						<span class="numhote">'.$data['ordre_aff'].'</span>
@@ -175,5 +174,6 @@
 	echo '
 					</ol>
 				</div>';
-mysql_free_result($query);
+$queryN->closeCursor();
 ?>
+
