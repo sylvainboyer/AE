@@ -1,6 +1,5 @@
 <?php
 include ('defineInc.php');
-include ('dbInc.php');
 include ('writeTabInc.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

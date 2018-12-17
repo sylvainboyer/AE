@@ -10,7 +10,6 @@ session_start();
 //include ('debug.php');
 
 include ('defineInc.php');
-include ('dbInc.php');
 
 setlocale(LC_ALL, 'fr_CA.utf8'); // fr_FR pour la France
 // TODO : A REVOIR (avec ligne 172)

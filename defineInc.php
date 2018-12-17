@@ -1,5 +1,5 @@
 <?php
-
+include ('dbInc.php');
 // Extrait de la BDD dans dbInc.php
 /*	$SAMEDI_1
 	$DIMANCHE_1
