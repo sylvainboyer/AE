@@ -1,9 +1,9 @@
 <?php
 // ecriture js
-$tab_js_F = fopen('../2014/js/tab.js', 'w+');
+$tab_js_F = fopen('./js/tab.js', 'w+');
 
 ftruncate($tab_js_F, 0); // On vide le fichier
-fseek($tab_js_F, 0); // On remet le curseur au début du fichier
+fseek($tab_js_F, 0); // On remet le curseur au dï¿½but du fichier
 $a_S = "//!! generation automatique\n";
 fputs($tab_js_F, $a_S);
 
@@ -21,6 +21,7 @@ $sql_S = 'SELECT * FROM '.$s_tablePrefix.'eceh_visiteur ORDER BY id';
 $query = $bdd->query($sql_S);
 
 while($data = $query->fetch()){
+
 	$h[1] = 0;
 	$h[2] = 0;
 	$h[3] = 0;
@@ -37,7 +38,7 @@ while($data = $query->fetch()){
 	$nb[6] = 0;
 	$nb[7] = 0;
 	$nb[8] = 0;
-	
+
 	$sql2_S = 'SELECT * FROM '.$s_tablePrefix.'eceh_inscription WHERE id_v='.$data['id'];
 	$query2 = $bdd->query($sql2_S) or die ("<br>erreur sur : " . $sql2_S);
 	while ($data2 = $query2->fetch()){
@@ -45,7 +46,8 @@ while($data = $query->fetch()){
 			$h[$data2['creneau']] = $data2['id_h'];
 			$nb[$data2['creneau']] = $data2['nb_pers'];
 		}
-  $query2->closeCursor();  
+	}
+  $query2->closeCursor();
 	$a_S = 'g_a_visiteurs[g_a_visiteurs.length] = createVisiteur('.$data['id'].', "'.$data['nom'].'"';
 	for ($i = 1; $i < 9; $i++){
 		$a_S .= ', '.$h[$i];
@@ -79,7 +81,7 @@ while ($data = mysql_fetch_array($query)){
 	$nb[6] = 0;
 	$nb[7] = 0;
 	$nb[8] = 0;
-	
+
 	$sql2_S = 'SELECT * FROM '.$s_tablePrefix.'eceh_inscription WHERE id_v='.$data['id'];
 	$query2 = mysql_query($sql2_S) or die ("<br>erreur sur : " . $sql2_S);
 	while ($data2 = mysql_fetch_array($query2)){
@@ -100,8 +102,8 @@ while ($data = mysql_fetch_array($query)){
 	fputs($tab_js_F, $a_S);
 }
    **************/
-   
-   
+
+
 /*g_a_hotes[g_a_hotes.length] = createHote(1, "mathieu sabin", 10)
 g_a_hotes[g_a_hotes.length] = createHote(2, "stephane artous", 20)
 g_a_hotes[g_a_hotes.length] = createHote(3, "didier chevreux", 15)

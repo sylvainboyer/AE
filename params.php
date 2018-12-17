@@ -16,7 +16,6 @@ if (isset($_SESSION['nom'])){
 	$s_valMail = "";
 	$s_valTel = "";
 }
-include ('dbInc.php');
 include ('defineInc.php');
 
 
@@ -142,7 +141,7 @@ include ('defineInc.php');
               <p>
                 <input value="Enregistrer" id="save" name="save" class="edit button" type="submit" />
               </p>
-              
+
 						</div>
 					</form>
 				</div>
